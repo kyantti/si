@@ -75,7 +75,6 @@ public class Population {
     /**
      * Find fittest individual in the population
      *
-     * @param offset
      * @return individual Fittest individual at offset
      */
     public Individual getFittest(int offset) {
@@ -127,18 +126,14 @@ public class Population {
     /**
      * Set individual at offset
      *
-     * @param individual
-     * @param offset
-     * @return individual
      */
-    public Individual setIndividual(int offset, Individual individual) {
-        return population[offset] = individual;
+    public void setIndividual(int offset, Individual individual) {
+        population[offset] = individual;
     }
 
     /**
      * Get individual at offset
      *
-     * @param offset
      * @return individual
      */
     public Individual getIndividual(int offset) {
@@ -148,7 +143,6 @@ public class Population {
     /**
      * Shuffles the population in-place
      *
-     * @return void
      */
     public void shuffle() {
         Random rnd = new Random();

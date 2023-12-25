@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Get a Schedule object with all the available information.
-        Schedule schedule = new Schedule();
+        Schedule schedule = new Schedule(Data.getInstance().getSubjects().size() * 2);
 
         // Initialize GA
         GeneticAlgorithm ga = new GeneticAlgorithm(50, 0.01, 0.8, 1, 5);
@@ -64,13 +64,13 @@ public class Main extends Application {
         for (Class bestClass : classes) {
             System.out.println("Class " + classIndex + ":");
             System.out.println("Module: " +
-                    Data.getInstance().getSubject(bestClass.getSubjectId()).getDenomination());
+                    Data.getInstance().getSubject(bestClass.subjectId()).denomination());
             System.out.println("Group: " +
-                    Data.getInstance().getGroup(bestClass.getGroupId()).getId());
+                    Data.getInstance().getGroup(bestClass.groupId()).id());
             System.out.println("Room: " +
-                    Data.getInstance().getRoomSlot(bestClass.getRoomId()).getDenomination());
+                    Data.getInstance().getRoomSlot(bestClass.roomId()).denomination());
             System.out.println("Time: " +
-                    Data.getInstance().getTimeSlot(bestClass.getTimeId()).getDenomination());
+                    Data.getInstance().getTimeSlot(bestClass.timeId()).denomination());
             System.out.println("-----");
             classIndex++;
         }
@@ -79,13 +79,13 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/es/unex/cum/si/practica/view/hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage groupStage = new Stage();
-            groupStage.setTitle("Curso " + group.getId());
+            groupStage.setTitle("Curso " + group.id());
             groupStage.setScene(scene);
             groupStage.show();
 
             Controller controller = fxmlLoader.getController();
             for (Class aClass : classes) {
-                if (aClass.getGroupId() == group.getId()) {
+                if (aClass.groupId() == group.id()) {
                     controller.show(aClass);
                 }
             }

@@ -40,7 +40,6 @@ public class GeneticAlgorithm {
     /**
      * Check if population has met termination condition
      *
-     * @param population
      * @return boolean True if termination condition met, otherwise, false
      */
     public boolean isTerminationConditionMet(Population population) {
@@ -56,15 +55,15 @@ public class GeneticAlgorithm {
 
         // Create new schedule object to use -- cloned from an existing schedule
         Schedule threadSchedule = new Schedule(schedule);
-        schedule.parseChromosome(individual);
+        threadSchedule.parseChromosome(individual);
 
         // Calculate fitness
         int clashes = schedule.calcConflicts();
-        int timeGaps = schedule.calcTimeGaps();
-        int quality = schedule.calcQuality();
+        //int timeGaps = schedule.calcTimeGaps();
+        //int quality = schedule.calcQuality();
         int k = 1000;
         int a = 10;
-        double fitness = 1 / ((double) ((clashes + 1) * k + timeGaps * a + quality));
+        double fitness = 1 / ((double) ((clashes + 1)));
 
         individual.setFitness(fitness);
 
@@ -74,8 +73,6 @@ public class GeneticAlgorithm {
     /**
      * Evaluate population
      *
-     * @param population
-     * @param schedule
      */
     public void evalPopulation(Population population, Schedule schedule) {
         double populationFitness = 0;
@@ -132,12 +129,10 @@ public class GeneticAlgorithm {
             // Loop over individual's genes
             for (int geneIndex = 0; geneIndex < individual.getChromosome().length; geneIndex++) {
                 // Skip mutation if this is an elite individual
-                if (populationIndex > this.elitismCount) {
-                    // Does this gene need mutation?
-                    if (this.mutationRate > Math.random()) {
+                if (populationIndex > this.elitismCount && (this.mutationRate > Math.random())) {
                         // Swap for new gene
                         individual.setGene(geneIndex, randomIndividual.getGene(geneIndex));
-                    }
+
                 }
             }
 

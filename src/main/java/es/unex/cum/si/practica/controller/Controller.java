@@ -103,10 +103,10 @@ public class Controller {
     public void show(Class aClass) {
         String text = "";
         text += "Subject: " +
-                Data.getInstance().getSubject(aClass.getSubjectId()).getDenomination() + "\n";
+                Data.getInstance().getSubject(aClass.subjectId()).denomination() + "\n";
         text += "Room: " +
-                Data.getInstance().getRoomSlot(aClass.getRoomId()).getDenomination() + "\n";
-        switch (aClass.getTimeId()) {
+                Data.getInstance().getRoomSlot(aClass.roomId()).denomination() + "\n";
+        switch (aClass.timeId()) {
             case 0:
                 time0.setText(text);
                 break;
@@ -196,6 +196,8 @@ public class Controller {
                 break;
             case 29:
                 time29.setText(text);
+                break;
+            default:
                 break;
         }
     }

@@ -1,20 +1,31 @@
 package es.unex.cum.si.practica.model.genotype;
 
-public class Group {
-    private final int id;
-    private final int[] subjectIds;
+import java.util.Arrays;
 
-    public Group(int id, int[] subjectIds) {
-        this.id = id;
-        this.subjectIds = subjectIds;
+public record Group(int id, int[] subjectIds) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Group group = (Group) o;
+
+        if (id != group.id) return false;
+        return Arrays.equals(subjectIds, group.subjectIds);
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + Arrays.hashCode(subjectIds);
+        return result;
     }
 
-    public int[] getSubjectIds() {
-        return subjectIds;
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", subjectIds=" + Arrays.toString(subjectIds) +
+                '}';
     }
-
 }

@@ -6,18 +6,19 @@ import es.unex.cum.si.practica.model.genotype.Subject;
 import es.unex.cum.si.practica.model.genotype.Time;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Data {
-    private final HashMap<Integer, Time> timeSlots;
-    private final HashMap<Integer, Room> roomSlots;
-    private final HashMap<Integer, Subject> subjects;
-    private final HashMap<Integer, Group> groups;
+    private static final HashMap<Integer, Time> timeSlots = new HashMap<>();
+    private static final HashMap<Integer, Room> roomSlots = new HashMap<>();
+    private static final HashMap<Integer, Subject> subjects = new HashMap<>();
+    private static final HashMap<Integer, Group> groups = new HashMap<>();
+    private static final int SUBJECT_HOURS_PER_WEEK = 2;
     private final Random random = new Random();
     private static Data instance;
 
     private Data() {
-        timeSlots = new HashMap<>();
         timeSlots.put(0, new Time(0, "Lunes 08:00 - 10:00"));
         timeSlots.put(1, new Time(1, "Lunes 10:00 - 12:00"));
         timeSlots.put(2, new Time(2, "Lunes 12:00 - 14:00"));
@@ -49,7 +50,6 @@ public class Data {
         timeSlots.put(28, new Time(28, "Viernes 17:00 - 19:00"));
         timeSlots.put(29, new Time(29, "Viernes 19:00 - 21:00"));
 
-        roomSlots = new HashMap<>();
         roomSlots.put(0, new Room(0, "Aula 1"));
         roomSlots.put(1, new Room(1, "Aula 2"));
         roomSlots.put(2, new Room(2, "Aula 3"));
@@ -57,7 +57,6 @@ public class Data {
         roomSlots.put(4, new Room(4, "Aula 5"));
         roomSlots.put(5, new Room(5, "Aula 6"));
 
-        subjects = new HashMap<>();
         subjects.put(0, new Subject(0, "ALG", 1));
         subjects.put(1, new Subject(1, "CAL", 1));
         subjects.put(2, new Subject(2, "FP", 1));
@@ -83,7 +82,6 @@ public class Data {
         subjects.put(22, new Subject(22, "SA", 4));
         subjects.put(23, new Subject(23, "PFTT", 4));
 
-        groups = new HashMap<>();
         groups.put(1 , new Group(1, new int[] { 0, 1, 2, 3, 4, 5 }));
         groups.put(2 , new Group(2, new int[] { 6, 7, 8, 9, 10, 11 }));
         groups.put(3 , new Group(3, new int[] { 12, 13, 14, 15, 16, 17 }));
@@ -97,19 +95,11 @@ public class Data {
         return instance;
     }
 
-    public HashMap<Integer, Time> getTimeSlots() {
-        return timeSlots;
-    }
-
-    public HashMap<Integer, Room> getRoomSlots() {
-        return roomSlots;
-    }
-
-    public HashMap<Integer, Subject> getSubjects() {
+    public Map<Integer, Subject> getSubjects() {
         return subjects;
     }
 
-    public HashMap<Integer, Group> getGroups() {
+    public Map<Integer, Group> getGroups() {
         return groups;
     }
 
@@ -121,11 +111,6 @@ public class Data {
     public Room getRandomRoom() {
         int roomId = random.nextInt(roomSlots.size());
         return roomSlots.get(roomId);
-    }
-
-    public Subject getRandomSubject() {
-        int subjectId = random.nextInt(subjects.size());
-        return subjects.get(subjectId);
     }
 
     public Time getTimeSlot(int id) {
@@ -142,6 +127,10 @@ public class Data {
 
     public Group getGroup(int id) {
         return groups.get(id);
+    }
+
+    public int getNumOfClasses() {
+        return subjects.size() * SUBJECT_HOURS_PER_WEEK;
     }
 
 }

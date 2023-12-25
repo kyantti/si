@@ -8,37 +8,20 @@ public class Individual {
     private double fitness = -1;
 
     public Individual(Data data){
-        int numClasses = data.getSubjects().size() * 2;
+        int numClasses = Data.getInstance().getNumOfClasses();
         //2 genes for each class: 1 gene for room, 1 for time
         int chromosomeLength = numClasses * 2;
         // Create random individual
         int[] newChromosome = new int[chromosomeLength];
         int chromosomeIndex = 0;
-        int timeslotId = 0;
-        int roomId = 0;
         // Loop through groups
         for (Group group : data.getGroups().values()) {
-            // Loop through modules
-            for (int moduleId : group.getSubjectIds()) {
-                // Add random time for first class (gene 1)
-                timeslotId = data.getRandomTimeslot().getId();
-                newChromosome[chromosomeIndex] = timeslotId;
-                chromosomeIndex++;
-
-                // Add random room for first class (gene 2)
-                roomId = data.getRandomRoom().getId();
-                newChromosome[chromosomeIndex] = roomId;
-                chromosomeIndex++;
-
-                // Add random time for second class (gene 3)
-                timeslotId = data.getRandomTimeslot().getId();
-                newChromosome[chromosomeIndex] = timeslotId;
-                chromosomeIndex++;
-
-                // Add random room for second class (gene 4)
-                roomId = data.getRandomRoom().getId();
-                newChromosome[chromosomeIndex] = roomId;
-                chromosomeIndex++;
+            // Loop through subjects
+            for (int i = 0; i < group.subjectIds().length ; i++) {
+                newChromosome[chromosomeIndex++] = data.getRandomTimeslot().id(); // time for first class
+                newChromosome[chromosomeIndex++] = data.getRandomRoom().id(); // room for first class
+                newChromosome[chromosomeIndex++] = data.getRandomTimeslot().id(); // time for second class
+                newChromosome[chromosomeIndex++] = data.getRandomRoom().id(); // room for second class
             }
         }
 

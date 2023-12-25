@@ -1,7 +1,12 @@
 
-M
-java:S1066‰"/Merge this if statement with the enclosing one.(Âõìõ8ú ñÉ1
-_
-java:S1854:"BRemove this useless assignment to local variable "threadSchedule".(¢¥ù¾8Ñ¡ñÉ1
-P
-java:S1481:"3Remove this unused "threadSchedule" local variable.(¢¥ù¾8Ò¡ñÉ1
+W
+java:S1854A"5Remove this useless assignment to local variable "a".(ò†äýÿÿÿÿ8§¦‰†Ê1
+R
+java:S1854@"5Remove this useless assignment to local variable "k".(Ôâ”Œ8§¦‰†Ê1
+X	java:S125>"<This block of commented-out lines of code should be removed.(ëÀÛÉ8©¦‰†Ê1
+C
+java:S1481@"&Remove this unused "k" local variable.(Ôâ”Œ8©¦‰†Ê1
+H
+java:S1481A"&Remove this unused "a" local variable.(ò†äýÿÿÿÿ8©¦‰†Ê1
+>
+java:S1110B"!Remove these useless parentheses.(ãº« 8©¦‰†Ê1
