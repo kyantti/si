@@ -1,0 +1,11 @@
+
+ƒ
+java:S1319d"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(‡ÌË„
+ƒ
+java:S1319h"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(Á¸»—
+ˆ
+java:S1319l"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(õ™Áùÿÿÿÿ
+ˆ
+java:S1319p"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(Ş†îÇıÿÿÿÿ
+¯
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(Ú¦Ì‰
