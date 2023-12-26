@@ -1,0 +1,14 @@
+
+W
+java:S1854C"5Remove this useless assignment to local variable "a".(ς†δύÿÿÿÿ8έρΉ”Κ1
+R
+java:S1854B"5Remove this useless assignment to local variable "k".(Τβ”8ήρΉ”Κ1
+]	java:S125@"<This block of commented-out lines of code should be removed.(„Ρ•ϊÿÿÿÿ8ίρΉ”Κ1
+C
+java:S1481B"&Remove this unused "k" local variable.(Τβ”8ίρΉ”Κ1
+H
+java:S1481C"&Remove this unused "a" local variable.(ς†δύÿÿÿÿ8ίρΉ”Κ1
+W
+java:S1117D":Rename "fitness" which hides the field declared at line 9.(γΊ« 8©΅¶Κ1
+>
+java:S1110D"!Remove these useless parentheses.(γΊ« 8ίρΉ”Κ1

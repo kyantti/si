@@ -2,7 +2,6 @@ package es.unex.cum.si.practica.model.genotype;
 
 import es.unex.cum.si.practica.model.fenotype.Individual;
 import es.unex.cum.si.practica.model.util.Data;
-
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -22,7 +21,6 @@ public class Schedule {
         int[] chromosome = individual.getChromosome();
         int chromosomePos = 0;
         int classIndex = 0;
-
         int timeId;
         int roomId;
 
@@ -33,7 +31,6 @@ public class Schedule {
                 timeId = chromosome[chromosomePos++];
                 roomId = chromosome[chromosomePos++];
                 classes[classIndex++] = new Class(classIndex, group.id(), timeId, roomId, subjectId);
-
                 // Second assignment
                 timeId = chromosome[chromosomePos++];
                 roomId = chromosome[chromosomePos++];

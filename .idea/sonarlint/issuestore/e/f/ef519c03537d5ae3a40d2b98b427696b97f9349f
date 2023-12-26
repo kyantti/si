@@ -1,12 +1,15 @@
 
-W
-java:S1854A"5Remove this useless assignment to local variable "a".(ò†äýÿÿÿÿ8§¦‰†Ê1
-R
-java:S1854@"5Remove this useless assignment to local variable "k".(Ôâ”Œ8§¦‰†Ê1
-X	java:S125>"<This block of commented-out lines of code should be removed.(ëÀÛÉ8©¦‰†Ê1
-C
-java:S1481@"&Remove this unused "k" local variable.(Ôâ”Œ8©¦‰†Ê1
-H
-java:S1481A"&Remove this unused "a" local variable.(ò†äýÿÿÿÿ8©¦‰†Ê1
->
-java:S1110B"!Remove these useless parentheses.(ãº« 8©¦‰†Ê1
+W	java:S125%"<This block of commented-out lines of code should be removed.(ÌÑÿj8Ä‚ŽºÊ1
+]	java:S125{"<This block of commented-out lines of code should be removed.(¹×‚Êùÿÿÿÿ8Î‚ŽºÊ1
+H	java:S106‰"+Replace this use of System.out by a logger.(Êæ—‚8Ï‚ŽºÊ1
+M	java:S106š"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8Ñ‚ŽºÊ1
+H	java:S106›"+Replace this use of System.out by a logger.(®Ü¥¶8Ñ‚ŽºÊ1
+M	java:S106œ"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8Ñ‚ŽºÊ1
+H	java:S106"+Replace this use of System.out by a logger.(¥ šù8Ò‚ŽºÊ1
+M	java:S106 "+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8Ò‚ŽºÊ1
+H	java:S106¤"+Replace this use of System.out by a logger.(ÛšÉœ8Ó‚ŽºÊ1
+H	java:S106¥"+Replace this use of System.out by a logger.(õËÎ³8Ó‚ŽºÊ1
+M	java:S106§"+Replace this use of System.out by a logger.(¼ž„Œùÿÿÿÿ8Ô‚ŽºÊ1
+H	java:S106©"+Replace this use of System.out by a logger.(—´µÛ8Ô‚ŽºÊ1
+H	java:S106«"+Replace this use of System.out by a logger.(¾Â º8Õ‚ŽºÊ1
+H	java:S106­"+Replace this use of System.out by a logger.(Å¸Þ8Ö‚ŽºÊ1

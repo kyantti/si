@@ -1,15 +1,16 @@
 package es.unex.cum.si.practica.model.fenotype;
 
 import es.unex.cum.si.practica.model.genotype.Group;
+import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 
 public class Individual {
-    private int[] chromosome;
+    private final int[] chromosome;
     private double fitness = -1;
 
     public Individual(Data data){
         int numClasses = Data.getInstance().getNumOfClasses();
-        //2 genes for each class: 1 gene for room, 1 for time
+        //2 chromosome for each class: 1 gene for room, 1 for time
         int chromosomeLength = numClasses * 2;
         // Create random individual
         int[] newChromosome = new int[chromosomeLength];
@@ -39,11 +40,6 @@ public class Individual {
         this.chromosome = individual;
     }
 
-    public Individual(int[] chromosome) {
-        // Create individual chromosome
-        this.chromosome = chromosome;
-    }
-
     public int[] getChromosome() {
         return chromosome;
     }
@@ -52,8 +48,28 @@ public class Individual {
         chromosome[offset] = gene;
     }
 
-    public void setFitness(double fitness) {
+    /**
+     * Calculate individual's fitness value
+     *
+     * @return fitness
+     */
+    public double calcFitness(Schedule schedule) {
+
+        // Create new schedule object to use -- cloned from an existing schedule
+        Schedule threadSchedule = new Schedule(schedule);
+        threadSchedule.parseChromosome(this);
+
+        // Calculate fitness
+        int clashes = threadSchedule.calcConflicts();
+        //int timeGaps = threadSchedule.calcTimeGaps();
+        //int quality = threadSchedule.calcQuality();
+        int k = 1000;
+        int a = 10;
+        double fitness = 1 / ((double) ((clashes + 1)));
+
         this.fitness = fitness;
+
+        return fitness;
     }
 
     public double getFitness() {

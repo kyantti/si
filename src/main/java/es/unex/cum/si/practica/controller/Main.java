@@ -1,7 +1,6 @@
 package es.unex.cum.si.practica.controller;
 
 import es.unex.cum.si.practica.model.fenotype.GeneticAlgorithm;
-import es.unex.cum.si.practica.model.fenotype.Population;
 import es.unex.cum.si.practica.model.genotype.Class;
 import es.unex.cum.si.practica.model.genotype.Group;
 import es.unex.cum.si.practica.model.genotype.Schedule;
@@ -16,65 +15,8 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        // Get a Schedule object with all the available information.
-        Schedule schedule = new Schedule(Data.getInstance().getSubjects().size() * 2);
-
-        // Initialize GA
-        GeneticAlgorithm ga = new GeneticAlgorithm(50, 0.01, 0.8, 1, 5);
-
-        // Initialize population
-        Population population = ga.initPopulation(Data.getInstance());
-
-        // Evaluate population
-        ga.evalPopulation(population, schedule);
-
-        // Keep track of current generation
-        int generation = 1;
-
-        // Start evolution loop
-        while (!ga.isTerminationConditionMet(generation, 500) && !ga.isTerminationConditionMet(population)) {
-            // Print fitness
-            System.out.println("Generation: " + generation + ", Best fitness: " + population.getFittest(0).getFitness());
-
-            // Apply crossover
-            population = ga.crossoverPopulation(population);
-
-            // Apply mutation
-            population = ga.mutatePopulation(population, Data.getInstance());
-
-            // Evaluate population
-            ga.evalPopulation(population, schedule);
-
-            // Increment the current generation
-            generation++;
-        }
-
-        // Print fitness
-        schedule.parseChromosome(population.getFittest(0));
-        System.out.println();
-        System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
-        System.out.println("Conflicts: " + schedule.calcConflicts());
-        //System.out.println("Quality: " + schedule.calcQuality());
-
-        // Print classes
-        System.out.println();
-        Class[] classes = schedule.getClasses();
-        int classIndex = 1;
-        for (Class bestClass : classes) {
-            System.out.println("Class " + classIndex + ":");
-            System.out.println("Module: " +
-                    Data.getInstance().getSubject(bestClass.subjectId()).denomination());
-            System.out.println("Group: " +
-                    Data.getInstance().getGroup(bestClass.groupId()).id());
-            System.out.println("Room: " +
-                    Data.getInstance().getRoomSlot(bestClass.roomId()).denomination());
-            System.out.println("Time: " +
-                    Data.getInstance().getTimeSlot(bestClass.timeId()).denomination());
-            System.out.println("-----");
-            classIndex++;
-        }
-
+        GeneticAlgorithm ga = new GeneticAlgorithm(500,50, 0.01, 0.8, 1, 5);
+        Schedule schedule = ga.run();
         for (Group group : Data.getInstance().getGroups().values()) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/es/unex/cum/si/practica/view/hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -84,13 +26,14 @@ public class Main extends Application {
             groupStage.show();
 
             Controller controller = fxmlLoader.getController();
-            for (Class aClass : classes) {
+            for (Class aClass : schedule.getClasses()) {
                 if (aClass.groupId() == group.id()) {
                     controller.show(aClass);
                 }
             }
         }
     }
+
     public static void main(String[] args) {
         launch();
     }

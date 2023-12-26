@@ -1,7 +1,10 @@
 
-E
-java:S1604R"(Make this anonymous inner class a lambda(ªƒ¶8Š›É†Ê1
-4
-java:S1700"Rename field "population"(ÇªÏŸøÿÿÿÿ
+O
+java:S1135P"2Complete the task associated to this TODO comment.(…ïœ†8à—»ÀÊ1
+O
+java:S1135T"2Complete the task associated to this TODO comment.(…ïœ†8á—»ÀÊ1
+:
+java:S2119Y"Save and re-use this "Random".( ªøy8ã—»ÀÊ1
+]	java:S125e"<This block of commented-out lines of code should be removed.(µ¿Ùšşÿÿÿÿ8†­ÛÀÊ1
 <
-java:S2119”"Save and re-use this "Random".(–áÍÈ8¤£ƒ‡Ê1
+java:S2119"Save and re-use this "Random".(–áÍÈ8é—»ÀÊ1
