@@ -49,35 +49,6 @@ public class GeneticAlgorithm {
         return tournament.getFittest(0);
     }*/
 
-    private Population mutatePopulation(Population population, Data data) {
-        // Initialize new population
-        Population newPopulation = new Population(this.populationSize);
-
-        // Loop over current population by fitness
-        for (int i = 0; i < population.size(); i++) {
-            Individual individual = population.getFittest(i);
-
-            // Create random individual to swap genes with
-            Individual randomIndividual = new Individual(data);
-
-            // Loop over individual's genes
-            for (int geneIndex = 0; geneIndex < individual.getChromosome().length; geneIndex++) {
-                // Skip mutation if this is an elite individual
-                if (i > this.elitismCount && (this.mutationRate > Math.random())) {
-                        // Swap for new gene
-                        individual.setGene(geneIndex, randomIndividual.getGene(geneIndex));
-
-                }
-            }
-
-            // Add individual to population
-            newPopulation.setIndividual(i, individual);
-        }
-
-        // Return mutated population
-        return newPopulation;
-    }
-
     private Population crossoverPopulation(Population population) {
         // Create new population
         Population newPopulation = new Population(population.size());
@@ -88,19 +59,19 @@ public class GeneticAlgorithm {
 
             // Apply crossover to this individual?
             if (crossoverRate > Math.random() && i >= elitismCount) {
+                // Find second parent
+                Individual parent2 = population.selectParentByRouletteWheel();
+
                 // Initialize offspring
                 Individual offspring = new Individual(parent1.getChromosome().length);
 
-                // Find second parent
-                Individual parent2 = population.selectParentByTournament(tournamentSize);
-
                 // Loop over genome
-                for (int geneIndex = 0; geneIndex < parent1.getChromosome().length; geneIndex++) {
+                for (int j = 0; j < parent1.getChromosome().length; j++) {
                     // Use half of parent1's genes and half of parent2's genes
                     if (0.5 > Math.random()) {
-                        offspring.setGene(geneIndex, parent1.getGene(geneIndex));
+                        offspring.setGene(j, parent1.getGene(j));
                     } else {
-                        offspring.setGene(geneIndex, parent2.getGene(geneIndex));
+                        offspring.setGene(j, parent2.getGene(j));
                     }
                 }
 
@@ -114,6 +85,37 @@ public class GeneticAlgorithm {
 
         return newPopulation;
     }
+
+    private Population mutatePopulation(Population population, Data data) {
+        // Initialize new population
+        Population newPopulation = new Population(this.populationSize);
+
+        // Loop over current population by fitness
+        for (int i = 0; i < population.size(); i++) {
+            Individual individual = population.getFittest(i);
+
+            // Create random individual to swap genes with
+            Individual randomIndividual = new Individual(data);
+
+            // Loop over individual's genes
+            for (int j = 0; j < individual.getChromosome().length; j++) {
+                // Skip mutation if this is an elite individual
+                if (i > this.elitismCount && (this.mutationRate > Math.random())) {
+                        // Swap for new gene
+                        individual.setGene(j, randomIndividual.getGene(j));
+
+                }
+            }
+
+            // Add individual to population
+            newPopulation.setIndividual(i, individual);
+        }
+
+        // Return mutated population
+        return newPopulation;
+    }
+
+
 
     public Schedule run(){
         // Create schedule object with array of classes

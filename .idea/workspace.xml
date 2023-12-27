@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="en ello">
+    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="sigo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/Individual.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/MaxOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/Population.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/232958b6237496f3ce693d8ba523375965ca76bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/232958b6237496f3ce693d8ba523375965ca76bc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d30b445db1dc38a063c3e146731f23cd37199dfd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d30b445db1dc38a063c3e146731f23cd37199dfd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/GeneticAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +55,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pablo/Documents/si/src/main/java/es/unex/cum/si/practica&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/pablo/Documents/si/src/main/java/es/unex/cum/si/maxone",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone" />
       <recent name="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -127,7 +131,8 @@
       <workItem from="1703583837539" duration="7083000" />
       <workItem from="1703600361441" duration="2048000" />
       <workItem from="1703611657065" duration="1422000" />
-      <workItem from="1703613091179" duration="9821000" />
+      <workItem from="1703613091179" duration="10039000" />
+      <workItem from="1703669555267" duration="17624000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -137,7 +142,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703498371518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sigo">
+      <option name="closed" value="true" />
+      <created>1703627455552</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703627455552</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sigo">
+      <option name="closed" value="true" />
+      <created>1703627486697</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703627486697</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +167,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="en ello" />
-    <option name="LAST_COMMIT_MESSAGE" value="en ello" />
+    <MESSAGE value="sigo" />
+    <option name="LAST_COMMIT_MESSAGE" value="sigo" />
   </component>
 </project>

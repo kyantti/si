@@ -96,4 +96,13 @@ public class Individual {
     public int getGene(int geneIndex) {
         return chromosome[geneIndex];
     }
+
+    public void mutate() {
+        // Create random individual to swap genes with
+        Individual randomIndividual = new Individual(Data.getInstance());
+        // Loop over individual's genes
+        for (int i = 0; i < chromosome.length; i++) {
+            chromosome[i] = randomIndividual.getGene(i);
+        }
+    }
 }

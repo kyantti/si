@@ -390,3 +390,11 @@ Q.idea/sonarlint/securityhotspotstore/6/4/64354e1fe8415df22ba8b7be9b1356ee980146
 Q.idea/sonarlint/securityhotspotstore/6/5/65d273732734d9dbf0aa6ae91d94998e78ef12e8,3/0/3016cbc5cc65fe42c31caadd280b8ce79aa337e8
 Å
 Q.idea/sonarlint/securityhotspotstore/6/a/6a8a82a7a3b835796d8a1f51052d8e514a23ff0c,c/8/c88f98aa75327f12cffa93c8b36bd5155f0751f5
+p
+@src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java,2/d/2d37115328241589e4203323413348bf17f925f2
+c
+3src/main/java/es/unex/cum/si/maxone/Individual.java,c/c/cc537f0cc72f20e56814631d4a9e4cd93fea6631
+_
+/src/main/java/es/unex/cum/si/maxone/MaxOne.java,5/f/5f452e5f432be7c563a5fbba2bc5193ef30edcd9
+c
+3src/main/java/es/unex/cum/si/maxone/Population.java,7/a/7a3f89d22a0523ab764eb47c89811ae9034f96df

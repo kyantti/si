@@ -1,15 +1,15 @@
 
-W	java:S125%"<This block of commented-out lines of code should be removed.(ÌÑÿj8Ä‚ºÊ1
-]	java:S125{"<This block of commented-out lines of code should be removed.(¹×‚Êùÿÿÿÿ8Î‚ºÊ1
-H	java:S106‰"+Replace this use of System.out by a logger.(Êæ—‚8Ï‚ºÊ1
-M	java:S106š"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Ñ‚ºÊ1
-H	java:S106›"+Replace this use of System.out by a logger.(®Ü¥¶8Ñ‚ºÊ1
-M	java:S106œ"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8Ñ‚ºÊ1
-H	java:S106"+Replace this use of System.out by a logger.(¥ šù8Ò‚ºÊ1
-M	java:S106 "+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Ò‚ºÊ1
-H	java:S106¤"+Replace this use of System.out by a logger.(ÛšÉœ8Ó‚ºÊ1
-H	java:S106¥"+Replace this use of System.out by a logger.(õËÎ³8Ó‚ºÊ1
-M	java:S106§"+Replace this use of System.out by a logger.(¼„Œùÿÿÿÿ8Ô‚ºÊ1
-H	java:S106©"+Replace this use of System.out by a logger.(—´µÛ8Ô‚ºÊ1
-H	java:S106«"+Replace this use of System.out by a logger.(¾Â º8Õ‚ºÊ1
-H	java:S106­"+Replace this use of System.out by a logger.(Å¸Ş8Ö‚ºÊ1
+W	java:S125%"<This block of commented-out lines of code should be removed.(ÌÑÿj8¤…·ÜÊ1
+]	java:S125}"<This block of commented-out lines of code should be removed.(¹×‚Êùÿÿÿÿ8«…·ÜÊ1
+H	java:S106‹"+Replace this use of System.out by a logger.(Êæ—‚8¬…·ÜÊ1
+M	java:S106œ"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8­…·ÜÊ1
+H	java:S106"+Replace this use of System.out by a logger.(®Ü¥¶8­…·ÜÊ1
+M	java:S106"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8­…·ÜÊ1
+H	java:S106Ÿ"+Replace this use of System.out by a logger.(¥ šù8­…·ÜÊ1
+M	java:S106¢"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8­…·ÜÊ1
+H	java:S106¦"+Replace this use of System.out by a logger.(ÛšÉœ8®…·ÜÊ1
+H	java:S106§"+Replace this use of System.out by a logger.(õËÎ³8®…·ÜÊ1
+M	java:S106©"+Replace this use of System.out by a logger.(¼„Œùÿÿÿÿ8®…·ÜÊ1
+H	java:S106«"+Replace this use of System.out by a logger.(—´µÛ8®…·ÜÊ1
+H	java:S106­"+Replace this use of System.out by a logger.(¾Â º8¯…·ÜÊ1
+H	java:S106¯"+Replace this use of System.out by a logger.(Å¸Ş8¯…·ÜÊ1
