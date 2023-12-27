@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="sigo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/Individual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/MaxOne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone/Population.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/232958b6237496f3ce693d8ba523375965ca76bc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/232958b6237496f3ce693d8ba523375965ca76bc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d30b445db1dc38a063c3e146731f23cd37199dfd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d30b445db1dc38a063c3e146731f23cd37199dfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/GeneticAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" afterDir="false" />
@@ -58,16 +52,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Driver.executor": "Run",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/pablo/Documents/si/src/main/java/es/unex/cum/si/maxone",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   }
@@ -82,6 +80,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="es.unex.cum.si.practica.model.fenotype.Driver" />
+      <module name="practica" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.unex.cum.si.practica.model.fenotype.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="es.unex.cum.si.practica.controller.Main" />
       <module name="practica" />
@@ -111,8 +122,16 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Driver" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-5f3ff201" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -133,6 +152,7 @@
       <workItem from="1703611657065" duration="1422000" />
       <workItem from="1703613091179" duration="10039000" />
       <workItem from="1703669555267" duration="17624000" />
+      <workItem from="1703698774389" duration="9159000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -169,5 +189,12 @@
     <MESSAGE value="en ello" />
     <MESSAGE value="sigo" />
     <option name="LAST_COMMIT_MESSAGE" value="sigo" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="pop.getFittest(0).getFitness()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

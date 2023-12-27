@@ -86,6 +86,38 @@ public class GeneticAlgorithm {
         return newPopulation;
     }
 
+    private Population crossoverPopulation2(Population population) {
+        // Create new population
+        Population newPopulation = new Population(population.size());
+        Individual[] offspring;
+        int i;
+        for (i  = 0; i < elitismCount; i++) {
+            newPopulation.setIndividual(i, population.getFittest(i));
+        }
+        while (i < population.size()) {
+            Individual parentA = population.selectParentByRouletteWheel();
+            Individual parentB = population.selectParentByRouletteWheel();
+            if (crossoverRate > Math.random()) {
+                offspring = population.crossover(parentA, parentB);
+                newPopulation.setIndividual(i, offspring[0]);
+                i++;
+                if (i < population.size()) {
+                    newPopulation.setIndividual(i, offspring[1]);
+                    i++;
+                }
+            } else {
+                newPopulation.setIndividual(i, parentA);
+                i++;
+                if (i < population.size()) {
+                    newPopulation.setIndividual(i, parentB);
+                    i++;
+                }
+            }
+        }
+
+        return newPopulation;
+    }
+
     private Population mutatePopulation(Population population, Data data) {
         // Initialize new population
         Population newPopulation = new Population(this.populationSize);
@@ -95,23 +127,38 @@ public class GeneticAlgorithm {
             Individual individual = population.getFittest(i);
 
             // Create random individual to swap genes with
-            Individual randomIndividual = new Individual(data);
 
-            // Loop over individual's genes
-            for (int j = 0; j < individual.getChromosome().length; j++) {
-                // Skip mutation if this is an elite individual
-                if (i > this.elitismCount && (this.mutationRate > Math.random())) {
-                        // Swap for new gene
-                        individual.setGene(j, randomIndividual.getGene(j));
-
-                }
-            }
 
             // Add individual to population
             newPopulation.setIndividual(i, individual);
         }
 
         // Return mutated population
+        return newPopulation;
+    }
+
+    private Population mutatePopulation2(Population population){
+        Population newPopulation = new Population(population.size());
+        Individual individual;
+        int i;
+        for (i = 0; i < elitismCount; i++) {
+            newPopulation.setIndividual(i, population.getFittest(i));
+        }
+        while (i < population.size()) {
+            individual = population.getIndividual(i);
+            Individual randomIndividual = new Individual(Data.getInstance());
+
+            // Loop over individual's genes
+            for (int j = 0; j < individual.getChromosome().length; j++) {
+                // Skip mutation if this is an elite individual
+                if (i > this.elitismCount && (this.mutationRate > Math.random())) {
+                    // Swap for new gene
+                    individual.setGene(j, randomIndividual.getGene(j));
+                }
+            }
+            newPopulation.setIndividual(i, individual);
+            i++;
+        }
         return newPopulation;
     }
 
@@ -139,10 +186,10 @@ public class GeneticAlgorithm {
             System.out.println("Generation: " + generation + ", Best fitness: " + population.getFittest(0).getFitness());
 
             // Apply crossover
-            population = crossoverPopulation(population);
+            population = crossoverPopulation2(population);
 
             // Apply mutation
-            population = mutatePopulation(population, Data.getInstance());
+            population = mutatePopulation2(population);
 
             // Evaluate population
             evalPopulation(population, schedule);
@@ -158,7 +205,7 @@ public class GeneticAlgorithm {
         System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
         System.out.println("Conflicts: " + schedule.calcConflicts());
 
-        // Print classes
+        /* Print classes
         System.out.println();
         Class[] classes = schedule.getClasses();
         int classIndex = 1;
@@ -174,7 +221,7 @@ public class GeneticAlgorithm {
                     Data.getInstance().getTimeSlot(bestClass.timeId()).denomination());
             System.out.println("-----");
             classIndex++;
-        }
+        }*/
 
         return schedule;
     }

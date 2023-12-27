@@ -4,6 +4,8 @@ import es.unex.cum.si.practica.model.genotype.Group;
 import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 
+import java.util.Random;
+
 public class Individual {
     private final int[] chromosome;
     private double fitness = -1;
@@ -98,11 +100,14 @@ public class Individual {
     }
 
     public void mutate() {
-        // Create random individual to swap genes with
         Individual randomIndividual = new Individual(Data.getInstance());
+        Random random = new Random();
         // Loop over individual's genes
         for (int i = 0; i < chromosome.length; i++) {
-            chromosome[i] = randomIndividual.getGene(i);
+            if (0.01 > Math.random()){
+                // Swap for new gene
+                chromosome[i] = randomIndividual.getGene(i);
+            }
         }
     }
 }

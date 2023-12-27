@@ -98,6 +98,26 @@ public class Population {
         return offspring;
     }
 
+    public Individual[] crossover(Individual indiv1, Individual indiv2) {
+        Individual[] newIndiv = new Individual[2];
+        newIndiv[0] = new Individual(indiv1.getChromosome().length);
+        newIndiv[1] = new Individual(indiv1.getChromosome().length);
+
+        int randPoint = new Random().nextInt(indiv1.getChromosome().length);
+        int i;
+        for (i = 0; i < randPoint; ++i) {
+            newIndiv[0].setGene(i, indiv1.getGene(i));
+            newIndiv[1].setGene(i, indiv2.getGene(i));
+        }
+        while (i < indiv1.getChromosome().length) {
+            newIndiv[0].setGene(i, indiv2.getGene(i));
+            newIndiv[1].setGene(i, indiv1.getGene(i));
+            i++;
+        }
+
+        return newIndiv;
+    }
+
     /*public Individual nPointCrossover(Individual parentA, Individual parentB, int n){
         Individual offspring = new Individual(parentA.getChromosome().length);
         int[] randomPoints = new int[n];
@@ -135,24 +155,7 @@ public class Population {
         return offspring;
     }
 
-    public Individual[] crossover(Individual indiv1, Individual indiv2) {
-        Individual[] newIndiv = new Individual[2];
-        newIndiv[0] = new Individual(indiv1.getChromosome().length);
-        newIndiv[1] = new Individual(indiv1.getChromosome().length);
 
-        int randPoint = new Random().nextInt(indiv1.getChromosome().length);
-        int i;
-        for (i = 0; i < randPoint; ++i) {
-            newIndiv[0].setGene(i, indiv1.getGene(i));
-            newIndiv[1].setGene(i, indiv2.getGene(i));
-        }
-        for (; i < indiv1.getChromosome().length; ++i) {
-            newIndiv[0].setGene(i, indiv2.getGene(i));
-            newIndiv[1].setGene(i, indiv1.getGene(i));
-        }
-
-        return newIndiv;
-    }
 
     public void evalPopulation(Schedule schedule) {
         for (Individual individual : individuals) {

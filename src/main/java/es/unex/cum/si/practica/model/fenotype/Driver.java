@@ -1,18 +1,16 @@
 package es.unex.cum.si.practica.model.fenotype;
 
-import es.unex.cum.si.practica.model.genotype.Class;
 import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 
 import java.util.Random;
 
 public class Driver {
-    static int ELITISM_K = 1;  //0 sin elimisto 1 con elitimos puro, solo pasa el primero
-    static int POP_SIZE = 50 + ELITISM_K; // population size
-    static int MAX_ITER = 500; // max number of iterations
-    static double MUTATION_RATE = 0.01; // probability of mutation
-    static double CROSSOVER_RATE = 0.8; // probability of crossover
-    private static Random random = new Random();
+    static int ELITISM_K = 2;
+    static int POP_SIZE = 50 + ELITISM_K;
+    static int MAX_ITER = 500;
+    static double MUTATION_RATE = 0.01;
+    static double CROSSOVER_RATE = 0.8;
     public static void main(String[] args) {
 
         Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
@@ -57,7 +55,7 @@ public class Driver {
                  * cruze, los padres serán sustituidos por los hijos En caso contrario, los
                  * padres sobreviven.
                  */
-                if (random.nextDouble() < CROSSOVER_RATE) {
+                if (Math.random() < CROSSOVER_RATE) {
                     indiv = pop.crossover(indiv[0], indiv[1]);
 
                     // Mutation
@@ -67,10 +65,10 @@ public class Driver {
                      * cruce (hijos) o no (padres) Si se da que hay mutción, la mutación coedificada
                      * el flip (cambio de bit) en uno de los bits de forma aleatoria
                      */
-                    if (random.nextDouble() < MUTATION_RATE) {
+                    if (Math.random() < MUTATION_RATE) {
                         indiv[0].mutate();
                     }
-                    if (random.nextDouble() < MUTATION_RATE) {
+                    if (Math.random() < MUTATION_RATE) {
                         indiv[1].mutate();
                     }
                 }
@@ -83,13 +81,14 @@ public class Driver {
                  *
                  */
                 newPopulation.setIndividual(j, indiv[0]);
-                newPopulation.setIndividual(j + 1, indiv[1]);
+                j++;
+                newPopulation.setIndividual(j, indiv[1]);
+                j++;
                 /*
                  * Se debe aumentar el contador indicando que hay dos individuos más en la nueva
                  * población Se parará este bucle cuando la nueva población llegue al número de
                  * individuos marcados por el usuario al comienzo de la confifuración.
                  */
-                j += 2;
             }
 
             /*
@@ -108,11 +107,6 @@ public class Driver {
             i++;
         }
 
-        // best indiv
-        /*
-         * Parada-> se muestra el mejor individuo.
-         */
-        // Print fitness
         schedule.parseChromosome(pop.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + i + " generations");
