@@ -1,15 +1,17 @@
 
 W	java:S125%"<This block of commented-out lines of code should be removed.(ÌÑÿj8¤…·ÜÊ1
-]	java:S125}"<This block of commented-out lines of code should be removed.(¹×‚Êùÿÿÿÿ8«…·ÜÊ1
-H	java:S106‹"+Replace this use of System.out by a logger.(Êæ—‚8¬…·ÜÊ1
-M	java:S106œ"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8­…·ÜÊ1
-H	java:S106"+Replace this use of System.out by a logger.(®Ü¥¶8­…·ÜÊ1
-M	java:S106"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8­…·ÜÊ1
-H	java:S106Ÿ"+Replace this use of System.out by a logger.(¥ šù8­…·ÜÊ1
-M	java:S106¢"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8­…·ÜÊ1
-H	java:S106¦"+Replace this use of System.out by a logger.(ÛšÉœ8®…·ÜÊ1
-H	java:S106§"+Replace this use of System.out by a logger.(õËÎ³8®…·ÜÊ1
-M	java:S106©"+Replace this use of System.out by a logger.(¼„Œùÿÿÿÿ8®…·ÜÊ1
-H	java:S106«"+Replace this use of System.out by a logger.(—´µÛ8®…·ÜÊ1
-H	java:S106­"+Replace this use of System.out by a logger.(¾Â º8¯…·ÜÊ1
-H	java:S106¯"+Replace this use of System.out by a logger.(Å¸Ş8¯…·ÜÊ1
+H
+java:S1172y"+Remove this unused method parameter "data".(Ã©‹8ªıûıÊ1
+^	java:S125¬"<This block of commented-out lines of code should be removed.(¹×‚Êùÿÿÿÿ8«…·ÜÊ1
+H	java:S106º"+Replace this use of System.out by a logger.(Êæ—‚8¬…·ÜÊ1
+M	java:S106Ë"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8­…·ÜÊ1
+H	java:S106Ì"+Replace this use of System.out by a logger.(®Ü¥¶8­…·ÜÊ1
+M	java:S106Í"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8­…·ÜÊ1
+H	java:S106Î"+Replace this use of System.out by a logger.(¥ šù8­…·ÜÊ1
+^	java:S125Ñ"<This block of commented-out lines of code should be removed.(ªÓ¼áşÿÿÿÿ8ÄıûıÊ1
+k
+java:S1128"IRemove this unused import 'es.unex.cum.si.practica.model.genotype.Class'.(·ü‘†ÿÿÿÿÿ8ÆıûıÊ1
+U
+java:S11444"8Remove this unused private "crossoverPopulation" method.(ÇÇœÇ8ÈıûıÊ1
+R
+java:S1144y"5Remove this unused private "mutatePopulation" method.(Ã©‹8ÈıûıÊ1

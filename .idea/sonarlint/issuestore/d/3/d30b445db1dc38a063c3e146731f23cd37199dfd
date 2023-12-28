@@ -1,14 +1,20 @@
 
 W
-java:S1854C"5Remove this useless assignment to local variable "a".(ò†äıÿÿÿÿ8ÖĞ­İÊ1
+java:S1854E"5Remove this useless assignment to local variable "a".(ò†äıÿÿÿÿ8ÖĞ­İÊ1
 R
-java:S1854B"5Remove this useless assignment to local variable "k".(Ôâ”Œ8×Ğ­İÊ1
-]	java:S125@"<This block of commented-out lines of code should be removed.(„Ñœ•úÿÿÿÿ8×Ğ­İÊ1
+java:S1854D"5Remove this useless assignment to local variable "k".(Ôâ”Œ8×Ğ­İÊ1
+]	java:S125B"<This block of commented-out lines of code should be removed.(„Ñœ•úÿÿÿÿ8×Ğ­İÊ1
 C
-java:S1481B"&Remove this unused "k" local variable.(Ôâ”Œ8×Ğ­İÊ1
+java:S1481D"&Remove this unused "k" local variable.(Ôâ”Œ8×Ğ­İÊ1
 H
-java:S1481C"&Remove this unused "a" local variable.(ò†äıÿÿÿÿ8ØĞ­İÊ1
-W
-java:S1117D":Rename "fitness" which hides the field declared at line 9.(ãº« 8ØĞ­İÊ1
+java:S1481E"&Remove this unused "a" local variable.(ò†äıÿÿÿÿ8ØĞ­İÊ1
+X
+java:S1117F";Rename "fitness" which hides the field declared at line 11.(ãº« 8ØĞ­İÊ1
 >
-java:S1110D"!Remove these useless parentheses.(ãº« 8ØĞ­İÊ1
+java:S1110F"!Remove these useless parentheses.(ãº« 8ØĞ­İÊ1
+V
+java:S1854h":Remove this useless assignment to local variable "random".(¼İÅf8„üıÊ1
+:
+java:S2119h"Save and re-use this "Random".(¼İÅf8”„üıÊ1
+G
+java:S1481h"+Remove this unused "random" local variable.(¼İÅf8”„üıÊ1
