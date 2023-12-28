@@ -12,7 +12,6 @@ public class Population {
     private double fitness = -1;
 
     public Population(int populationSize) {
-        // Initial individuals
         this.individuals = new Individual[populationSize];
     }
 
@@ -43,6 +42,24 @@ public class Population {
         return this.individuals[offset];
     }
 
+    public Individual selectParentByRouletteWheel(){
+        // Spin roulette wheel
+        double rouletteWheelPosition = Math.random() * fitness;
+        // Find parent
+        double spinWheel = 0;
+        for (Individual individual : individuals) {
+            spinWheel += individual.getFitness();
+            if (spinWheel >= rouletteWheelPosition) {
+                return individual;
+            }
+        }
+        return individuals[individuals.length - 1];
+    }
+
+    public void selectParentByRank(){
+
+    }
+
     public Individual selectParentByTournament(int tournamentSize) {
         // Shuffle the individuals to randomize the tournament selection
         shuffle();
@@ -62,29 +79,22 @@ public class Population {
         return tournament[0];
     }
 
-    public Individual selectParentByRouletteWheel(){
-        // Spin roulette wheel
-        double rouletteWheelPosition = Math.random() * fitness;
-        // Find parent
-        double spinWheel = 0;
-        for (Individual individual : individuals) {
-            spinWheel += individual.getFitness();
-            if (spinWheel >= rouletteWheelPosition) {
-                return individual;
+    public Individual selectParentByTruncation(int n){
+        Individual[] truncation = Arrays.copyOfRange(individuals,0, individuals.length);
+        Arrays.sort(truncation, (o1, o2) -> {
+            if (o1.getFitness() > o2.getFitness()) {
+                return -1;
+            } else if (o1.getFitness() < o2.getFitness()) {
+                return 1;
             }
-        }
-        return individuals[individuals.length - 1];
+            return 0;
+        });
+        // Select a random individual discarding the n worst
+        int randomPoint = new Random().nextInt(individuals.length - n);
+        return truncation[randomPoint];
     }
 
-    public void selectParentByRank(){
-        //TODO
-    }
-
-    public void selectParentByTruncation(){
-        //TODO
-    }
-
-    public Individual onePointCrossover(Individual parentA, Individual parentB){
+    /*public Individual onePointCrossover(Individual parentA, Individual parentB){
         Individual offspring = new Individual(parentA.getChromosome().length);
         int randomPoint = new Random().nextInt(parentA.getChromosome().length);
 
@@ -96,27 +106,7 @@ public class Population {
             }
         }
         return offspring;
-    }
-
-    public Individual[] crossover(Individual indiv1, Individual indiv2) {
-        Individual[] newIndiv = new Individual[2];
-        newIndiv[0] = new Individual(indiv1.getChromosome().length);
-        newIndiv[1] = new Individual(indiv1.getChromosome().length);
-
-        int randPoint = new Random().nextInt(indiv1.getChromosome().length);
-        int i;
-        for (i = 0; i < randPoint; ++i) {
-            newIndiv[0].setGene(i, indiv1.getGene(i));
-            newIndiv[1].setGene(i, indiv2.getGene(i));
-        }
-        while (i < indiv1.getChromosome().length) {
-            newIndiv[0].setGene(i, indiv2.getGene(i));
-            newIndiv[1].setGene(i, indiv1.getGene(i));
-            i++;
-        }
-
-        return newIndiv;
-    }
+    }*/
 
     /*public Individual nPointCrossover(Individual parentA, Individual parentB, int n){
         Individual offspring = new Individual(parentA.getChromosome().length);
@@ -143,7 +133,7 @@ public class Population {
         return offspring;
     }*/
 
-    public Individual uniformCrossover(Individual parentA, Individual parentB){
+    /*public Individual uniformCrossover(Individual parentA, Individual parentB){
         Individual offspring = new Individual(parentA.getChromosome().length);
         for (int i = 0; i < parentA.getChromosome().length; i++) {
             if (Math.random() < 0.5) {
@@ -153,9 +143,77 @@ public class Population {
             }
         }
         return offspring;
+    }*/
+
+    public Individual[] onePointCrossover(Individual parentA, Individual parentB) {
+        Individual[] newIndividuals = new Individual[2];
+        newIndividuals[0] = new Individual(parentA.getChromosome().length);
+        newIndividuals[1] = new Individual(parentA.getChromosome().length);
+
+        int randPoint = new Random().nextInt(parentA.getChromosome().length);
+        int i;
+        for (i = 0; i < randPoint; ++i) {
+            newIndividuals[0].setGene(i, parentA.getGene(i));
+            newIndividuals[1].setGene(i, parentB.getGene(i));
+        }
+        while (i < parentA.getChromosome().length) {
+            newIndividuals[0].setGene(i, parentB.getGene(i));
+            newIndividuals[1].setGene(i, parentA.getGene(i));
+            i++;
+        }
+
+        return newIndividuals;
     }
 
+    public Individual[] nPointCrossover(Individual parentA, Individual parentB, int n){
+        int[] randomPoints = new int[n];
+        Individual[] newIndividuals = new Individual[2];
+        int i = 0;
+        int j = 0;
+        for (i = 0; i < n; i++) {
+            randomPoints[i] = new Random().nextInt(parentA.getChromosome().length);
+        }
 
+        Arrays.sort(randomPoints);
+
+        newIndividuals[0] = new Individual(parentA.getChromosome().length);
+        newIndividuals[1] = new Individual(parentA.getChromosome().length);
+
+        for (i = 0; i < n; i++){
+            if (i % 2 == 0){
+                while(j < randomPoints[i]){
+                    newIndividuals[0].setGene(j, parentA.getGene(j));
+                    newIndividuals[1].setGene(j, parentB.getGene(j));
+                    j++;
+                }
+            }
+            else{
+                while (j < randomPoints[i]){
+                    newIndividuals[0].setGene(j, parentB.getGene(j));
+                    newIndividuals[1].setGene(j, parentA.getGene(j));
+                    j++;
+                }
+            }
+        }
+        return newIndividuals;
+    }
+
+    public Individual[] uniformCrossover(Individual parentA, Individual parentB){
+        Individual[] newIndividuals = new Individual[2];
+        newIndividuals[0] = new Individual(parentA.getChromosome().length);
+        newIndividuals[1] = new Individual(parentA.getChromosome().length);
+
+        for (int i = 0; i < parentA.getChromosome().length; i++) {
+            if (Math.random() < 0.5) {
+                newIndividuals[0].setGene(i, parentA.getGene(i));
+                newIndividuals[1].setGene(i, parentB.getGene(i));
+            } else {
+                newIndividuals[0].setGene(i, parentB.getGene(i));
+                newIndividuals[1].setGene(i, parentA.getGene(i));
+            }
+        }
+        return newIndividuals;
+    }
 
     public void evalPopulation(Schedule schedule) {
         for (Individual individual : individuals) {

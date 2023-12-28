@@ -32,7 +32,6 @@ public class Individual {
     }
 
     public Individual(int chromosomeLength) {
-        // Create random individual
         int[] individual;
         individual = new int[chromosomeLength];
         for (int gene = 0; gene < chromosomeLength; gene++) {
@@ -108,6 +107,21 @@ public class Individual {
                 // Swap for new gene
                 chromosome[i] = randomIndividual.getGene(i);
             }
+        }
+    }
+
+    public void mutate2() {
+        Random random = new Random();
+
+        // Elegir un punto aleatorio impar para cortar el cromosoma
+        int cutPoint = (random.nextInt(chromosome.length / 2) * 2) + 1;
+        System.out.println("cutPoint: " + cutPoint);
+
+        // Dar vuelta a la parte del cromosoma después del punto de corte
+        for (int i = cutPoint, j = chromosome.length - 1; i < j; i++, j--) {
+            int temp = chromosome[i];
+            chromosome[i] = chromosome[j];
+            chromosome[j] = temp;
         }
     }
 }

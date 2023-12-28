@@ -11,6 +11,10 @@ public class Driver {
     static int MAX_ITER = 500;
     static double MUTATION_RATE = 0.01;
     static double CROSSOVER_RATE = 0.8;
+
+    /*public Individual selectParent(int method){
+
+    }*/
     public static void main(String[] args) {
 
         Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
@@ -56,7 +60,7 @@ public class Driver {
                  * padres sobreviven.
                  */
                 if (Math.random() < CROSSOVER_RATE) {
-                    indiv = pop.crossover(indiv[0], indiv[1]);
+                    indiv = pop.onePointCrossover(indiv[0], indiv[1]);
 
                     // Mutation
                     /*

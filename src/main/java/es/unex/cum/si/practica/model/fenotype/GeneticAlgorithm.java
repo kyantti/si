@@ -98,7 +98,7 @@ public class GeneticAlgorithm {
             Individual parentA = population.selectParentByRouletteWheel();
             Individual parentB = population.selectParentByRouletteWheel();
             if (crossoverRate > Math.random()) {
-                offspring = population.crossover(parentA, parentB);
+                offspring = population.onePointCrossover(parentA, parentB);
                 newPopulation.setIndividual(i, offspring[0]);
                 i++;
                 if (i < population.size()) {
@@ -224,6 +224,86 @@ public class GeneticAlgorithm {
         }*/
 
         return schedule;
+    }
+
+    public Schedule run2() {
+        // Create schedule object with an array of classes
+        Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
+
+        // Initialize population
+        Population population = new Population(this.populationSize, Data.getInstance());
+
+        // Keep track of current generation
+        int generation = 1;
+
+        // Start evolution loop
+        while (!isTerminationConditionMet(generation, population)) {
+            // Print fitness
+            System.out.println("Generation: " + generation + ", Best fitness: " + population.getFittest(0).getFitness());
+
+            // Apply crossover
+            Population newPopulation = new Population(population.size());
+            for (int i = 0; i < elitismCount; i++) {
+                newPopulation.setIndividual(i, population.getFittest(i));
+            }
+            int i = elitismCount;
+            while (i < population.size()) {
+                Individual parentA = population.selectParentByRouletteWheel();
+                Individual parentB = population.selectParentByRouletteWheel();
+                if (crossoverRate > Math.random()) {
+                    Individual[] offspring = population.onePointCrossover(parentA, parentB);
+                    newPopulation.setIndividual(i, offspring[0]);
+                    i++;
+                    if (i < population.size()) {
+                        newPopulation.setIndividual(i, offspring[1]);
+                        i++;
+                    }
+                } else {
+                    newPopulation.setIndividual(i, parentA);
+                    i++;
+                    if (i < population.size()) {
+                        newPopulation.setIndividual(i, parentB);
+                        i++;
+                    }
+                }
+            }
+            population = newPopulation;
+
+            // Apply mutation
+            for (i = elitismCount; i < population.size(); i++) {
+                Individual individual = population.getIndividual(i);
+                Individual randomIndividual = new Individual(Data.getInstance());
+
+                // Loop over individual's genes
+                for (int j = 0; j < individual.getChromosome().length; j++) {
+                    // Skip mutation if this is an elite individual
+                    if (i > this.elitismCount && (this.mutationRate > Math.random())) {
+                        // Swap for a new gene
+                        individual.setGene(j, randomIndividual.getGene(j));
+                    }
+                }
+            }
+
+            // Evaluate population
+            population.evalPopulation(schedule);
+
+            // Increment the current generation
+            generation++;
+        }
+
+        // Print fitness
+        schedule.parseChromosome(population.getFittest(0));
+        System.out.println();
+        System.out.println("Solution found in " + generation + " generations");
+        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
+        System.out.println("Conflicts: " + schedule.calcConflicts());
+
+        return schedule;
+    }
+
+    public static void main(String[] args) {
+        GeneticAlgorithm ga = new GeneticAlgorithm(500,50, 0.01, 0.8, 1, 5);
+        Schedule schedule = ga.run2();
     }
 
 }
