@@ -1,4 +1,4 @@
-package es.unex.cum.si.practica;
+package es.unex.cum.si.restos;
 
 import java.util.Random;
 

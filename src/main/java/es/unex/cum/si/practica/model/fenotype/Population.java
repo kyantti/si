@@ -56,8 +56,43 @@ public class Population {
         return individuals[individuals.length - 1];
     }
 
-    public void selectParentByRank(){
+    public Individual rankSelection() {
+        //sumatorio de los numeros consecutivos del ranking
+        int totalranking = 0;
+        for (int i = 1; i <= individuals.length; i++) {
+            totalranking += i;
+        }
 
+        Individual[] copy = Arrays.copyOfRange(individuals,0, individuals.length);
+        double[] ranks = new double[individuals.length];
+
+        Arrays.sort(copy, (o1, o2) -> {
+            if (o1.getFitness() > o2.getFitness()) {
+                return -1;
+            } else if (o1.getFitness() < o2.getFitness()) {
+                return 1;
+            }
+            return 0;
+        });
+
+        //calcula el % ranking de cada cromosoma y lo guarda en rank
+        for (int i = 1; i <= individuals.length; i++) {
+            if (totalranking != 0) {
+                ranks[i - 1] = (double) i / totalranking * 100;
+            }  else {
+                ranks[i - 1] = 0;
+            }
+        }
+
+        //calcula valor aleatorio entre 0 y 100
+        int randNum = new Random().nextInt(100);
+        int partialSum = 0;
+        int index = 0;
+        while (index < individuals.length - 1 && partialSum < randNum) {
+            partialSum += (int) ranks[index];
+            index++;
+        }
+        return copy[index];
     }
 
     public Individual selectParentByTournament(int tournamentSize) {
@@ -216,9 +251,15 @@ public class Population {
     }
 
     public void evalPopulation(Schedule schedule) {
+        double fitness = 0;
         for (Individual individual : individuals) {
             fitness += individual.calcFitness(schedule);
         }
+        this.fitness = fitness;
+    }
+
+    public double getFitness() {
+        return fitness;
     }
 
     public int size() {

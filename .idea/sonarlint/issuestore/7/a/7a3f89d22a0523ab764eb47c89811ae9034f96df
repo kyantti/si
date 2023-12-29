@@ -1,0 +1,27 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¾ƒç
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¾ƒç
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¾ƒç
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’åÛ·
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’åÛ·
+i	java:S116"TRename this field "ELITISM_K" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ³¼Ç
+m	java:S116"SRename this field "POP_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íŞä³üÿÿÿÿ
+m	java:S116"SRename this field "MAX_ITER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ­µŠûÿÿÿÿ
+r	java:S116	"XRename this field "MUTATION_RATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ƒÜøÿÿÿÿ
+n	java:S116
+"YRename this field "CROSSOVER_RATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ùö©
+l	java:S116"WRename this field "m_population" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ­Ï
+g
+java:S3008"QRename this field "m_rand" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß¨©õ
+Q	java:S125%"<This block of commented-out lines of code should be removed.(ñÓ†‘
+h	java:S100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÇşøıÿÿÿÿ
+P
+java:S2209."5Change this instance-reference to a static reference.(™Ñßşÿÿÿÿ
+P
+java:S1854P":Remove this useless assignment to local variable "idxMin".(öƒƒÄ
+U
+java:S1854X":Remove this useless assignment to local variable "idxMin".(õ±ï‘üÿÿÿÿ
+:
+java:S1659G"$Declare "idxMin" on a separate line.(åÌû÷
+A
+java:S1481G"+Remove this unused "idxMin" local variable.(åÌû÷

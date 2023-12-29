@@ -1,0 +1,17 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ø–ç8ë†ØÊ1
+m	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ã—æ8ë†ØÊ1
+r	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–°¬Ãıÿÿÿÿ8ë†ØÊ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú°ÚÔøÿÿÿÿ8ë†ØÊ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ú½È8ë†ØÊ1
+G	java:S106"+Replace this use of System.out by a logger.(•¿Ø¥8Õì†ØÊ1
+L	java:S106"+Replace this use of System.out by a logger.(ú¾÷¿ùÿÿÿÿ8Öì†ØÊ1
+F	java:S106"+Replace this use of System.out by a logger.(—¶ú(8Öì†ØÊ1
+L	java:S106"+Replace this use of System.out by a logger.(Ô”¬¦ùÿÿÿÿ8Öì†ØÊ1
+L	java:S106m"+Replace this use of System.out by a logger.(‰ÏğÈıÿÿÿÿ8Ùì†ØÊ1
+L	java:S106n"+Replace this use of System.out by a logger.(ú¾÷¿ùÿÿÿÿ8Ùì†ØÊ1
+F	java:S106o"+Replace this use of System.out by a logger.(—¶ú(8Úì†ØÊ1
+L	java:S106p"+Replace this use of System.out by a logger.(Ô”¬¦ùÿÿÿÿ8Úì†ØÊ1
+G	java:S106z"+Replace this use of System.out by a logger.(×Š¯ã8Úì†ØÊ1
+G	java:S106}"+Replace this use of System.out by a logger.(ğ¸ùˆ8Ûì†ØÊ1

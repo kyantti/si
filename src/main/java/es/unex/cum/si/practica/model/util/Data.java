@@ -5,8 +5,12 @@ import es.unex.cum.si.practica.model.genotype.Room;
 import es.unex.cum.si.practica.model.genotype.Subject;
 import es.unex.cum.si.practica.model.genotype.Time;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
 public class Data {
@@ -18,7 +22,7 @@ public class Data {
     private final Random random = new Random();
     private static Data instance;
 
-    private Data() {
+    /*private Data() {
         timeSlots.put(0, new Time(0, "Lunes 08:00 - 10:00"));
         timeSlots.put(1, new Time(1, "Lunes 10:00 - 12:00"));
         timeSlots.put(2, new Time(2, "Lunes 12:00 - 14:00"));
@@ -86,6 +90,44 @@ public class Data {
         groups.put(2 , new Group(2, new int[] { 6, 7, 8, 9, 10, 11 }));
         groups.put(3 , new Group(3, new int[] { 12, 13, 14, 15, 16, 17 }));
         groups.put(4 , new Group(4, new int[] { 18, 19, 20, 21, 22, 23 }));
+    }*/
+
+    private Data(){
+        Properties properties = new Properties();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/es/unex/cum/si/practica/config/config.properties"))) {
+            properties.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        int numDays = Integer.parseInt(properties.getProperty("DAYS"));
+        int numPeriods = Integer.parseInt(properties.getProperty("PERIODS"));
+        int numRooms = Integer.parseInt(properties.getProperty("ROOMS"));
+        int numSubjects = Integer.parseInt(properties.getProperty("SUBJECTS"));
+        int numGroups = Integer.parseInt(properties.getProperty("GROUPS"));
+
+        int i;
+
+        for (i = 0; i < numDays * numPeriods ; i++) {
+            timeSlots.put(i, new Time(i, "Time " + i));
+        }
+
+        for (i = 0; i < numRooms; i++) {
+            roomSlots.put(i, new Room(i, "Room " + (i+1)));
+        }
+
+        for (i = 0; i < numSubjects * numGroups; i++) {
+            subjects.put(i, new Subject(i, "Subject " + i));
+        }
+
+        // asignar a cada grupo un conjunto de asignaturas, al primer grupo las primeras 6, al segundo las siguientes 6, etc.
+        for (i = 0; i < numGroups; i++) {
+            int[] groupSubjects = new int[numSubjects];
+            for (int j = 0; j < groupSubjects.length; j++) {
+                groupSubjects[j] = i * groupSubjects.length + j;
+            }
+            groups.put(i + 1, new Group(i + 1, groupSubjects));
+        }
     }
 
     public static Data getInstance() {
@@ -93,10 +135,6 @@ public class Data {
             instance = new Data();
         }
         return instance;
-    }
-
-    public Map<Integer, Subject> getSubjects() {
-        return subjects;
     }
 
     public Map<Integer, Group> getGroups() {
@@ -113,10 +151,6 @@ public class Data {
         return roomSlots.get(roomId);
     }
 
-    public Time getTimeSlot(int id) {
-        return timeSlots.get(id);
-    }
-
     public Room getRoomSlot(int id) {
         return roomSlots.get(id);
     }
@@ -125,12 +159,30 @@ public class Data {
         return subjects.get(id);
     }
 
-    public Group getGroup(int id) {
-        return groups.get(id);
-    }
-
     public int getNumOfClasses() {
         return subjects.size() * SUBJECT_HOURS_PER_WEEK;
+    }
+
+    public static void main(String[] args) {
+        Data data = Data.getInstance();
+        // show all data
+        System.out.println("Time slots:");
+        for (Time time : data.timeSlots.values()) {
+            System.out.println(time);
+        }
+        System.out.println("Room slots:");
+        for (Room room : data.roomSlots.values()) {
+            System.out.println(room);
+        }
+        System.out.println("Subjects:");
+        for (Subject subject : data.subjects.values()) {
+            System.out.println(subject);
+        }
+        System.out.println("Groups:");
+        for (Group group : data.groups.values()) {
+            System.out.println(group);
+        }
+
     }
 
 }

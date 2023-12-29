@@ -3,110 +3,179 @@ package es.unex.cum.si.practica.model.fenotype;
 import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 
+import java.io.*;
+import java.util.Properties;
 import java.util.Random;
+import com.opencsv.CSVWriter;
 
 public class Driver {
-    static int ELITISM_K = 2;
-    static int POP_SIZE = 50 + ELITISM_K;
-    static int MAX_ITER = 500;
-    static double MUTATION_RATE = 0.01;
-    static double CROSSOVER_RATE = 0.8;
+    private static final int ELITISM_K;
+    private static final int POP_SIZE;
+    private static final int MAX_ITER;
+    private static final double MUTATION_RATE;
+    private static final double CROSSOVER_RATE;
+    private static final int REPLACEMENT_STRATEGY;
+    private static final int SELECTION_ALGORITHM;
+    private static final int TOURNAMENT_SIZE;
+    private static final int TRUNCATION_SIZE;
+    private static final int CROSSOVER_ALGORITHM;
+    private static final int CROSSOVER_POINTS;
+    private static final int MUTATION_ALGORITHM;
 
-    /*public Individual selectParent(int method){
+    static {
+        // Load configuration from .config file
+        Properties properties = new Properties();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/es/unex/cum/si/practica/config/config.properties"))) {
+            properties.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ELITISM_K = Integer.parseInt(properties.getProperty("ELITISM_K"));
+        POP_SIZE = Integer.parseInt(properties.getProperty("POP_SIZE"));
+        MAX_ITER = Integer.parseInt(properties.getProperty("MAX_ITER"));
+        MUTATION_RATE = Double.parseDouble(properties.getProperty("MUTATION_RATE"));
+        CROSSOVER_RATE = Double.parseDouble(properties.getProperty("CROSSOVER_RATE"));
+        REPLACEMENT_STRATEGY = Integer.parseInt(properties.getProperty("REPLACEMENT_STRATEGY"));
+        SELECTION_ALGORITHM = Integer.parseInt(properties.getProperty("SELECTION_ALGORITHM"));
+        TOURNAMENT_SIZE = Integer.parseInt(properties.getProperty("TOURNAMENT_SIZE"));
+        TRUNCATION_SIZE = Integer.parseInt(properties.getProperty("TRUNCATION_SIZE"));
+        CROSSOVER_ALGORITHM = Integer.parseInt(properties.getProperty("CROSSOVER_ALGORITHM"));
+        CROSSOVER_POINTS = Integer.parseInt(properties.getProperty("CROSSOVER_POINTS"));
+        MUTATION_ALGORITHM = Integer.parseInt(properties.getProperty("MUTATION_ALGORITHM"));
+    }
 
-    }*/
-    public static void main(String[] args) {
+
+
+    private static Individual selectParent(Population pop) {
+        if (SELECTION_ALGORITHM == 0) {
+            return pop.selectParentByRouletteWheel();
+        }
+        else if (SELECTION_ALGORITHM == 1) {
+            return pop.rankSelection();
+        }
+        else if (SELECTION_ALGORITHM == 2) {
+            return pop.selectParentByTournament(TOURNAMENT_SIZE);
+        }
+        else if (SELECTION_ALGORITHM == 3){
+            return pop.selectParentByTruncation(TRUNCATION_SIZE);
+        }
+        else {
+            return null;
+        }
+    }
+
+    private static Individual[] crossover(Population population, Individual parentA, Individual parentB) {
+        if (CROSSOVER_ALGORITHM == 0 && CROSSOVER_POINTS == 1) {
+            return population.onePointCrossover(parentA, parentB);
+        }
+        else if (CROSSOVER_ALGORITHM == 1 && CROSSOVER_POINTS > 1) {
+            return population.nPointCrossover(parentA, parentB, CROSSOVER_POINTS);
+        }
+        else if (CROSSOVER_ALGORITHM == 2){
+            return population.uniformCrossover(parentA, parentB);
+        }
+        else {
+            return new Individual[0];
+        }
+    }
+
+    private static void mutation(Individual individual) {
+        if (MUTATION_ALGORITHM == 0) {
+            individual.mutate(MUTATION_RATE);
+        }
+        else if (MUTATION_ALGORITHM == 1) {
+            individual.mutate2();
+        }
+    }
+
+    public Schedule runTeachers() throws IOException {
 
         Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
         Population pop = new Population(POP_SIZE, Data.getInstance());
-        //Population newPop = new Population(POP_SIZE);
+        Population newPopulation;
         Individual[] indiv = new Individual[2];
+        Individual[] newIndiv;
         int i = 0;
+        File outDir = new File("out");
+        if (!outDir.exists()) {
+            if (outDir.mkdirs()) {
+                System.out.println("Directorio 'out' creado con éxito.");
+            } else {
+                System.err.println("Error al crear el directorio 'out'.");
+            }
+        }
+        // Especifica el nombre del archivo CSV en el directorio out
+        FileWriter outputfile = new FileWriter("out/resultados.csv");
 
-        // first evaluation
+        // Crea un CSVWriter con delimitador ',' (puedes cambiarlo según tus necesidades)
+        CSVWriter csvWriter = new CSVWriter(outputfile);
+
+        // Escribe la primera línea con los encabezados
+        String[] headers = {"Generation", "Best Fitness", "Total Fitness"};
+        csvWriter.writeNext(headers);
+        String[] data = new String[3];
+
         pop.evalPopulation(schedule);
 
-        while (i < MAX_ITER &&  pop.getFittest(0).getFitness() != 1){
+        while (i < MAX_ITER && pop.getFittest(0).getFitness() != 1) {
 
-            // Print fitness
-            System.out.println("Generation: " + i + ", Best fitness: " + pop.getFittest(0).getFitness());
+            System.out.println("Generation: " + i + ", Best fitness: " + pop.getFittest(0).getFitness() + ", Total fitness: " + pop.getFitness());
+            data[0] = Integer.toString(i);
+            data[1] = Double.toString(pop.getFittest(0).getFitness());
+            data[2] = Double.toString(pop.getFitness());
+            csvWriter.writeNext(data);
 
-            Population newPopulation = new Population(pop.size());
+            newPopulation = new Population(pop.size());
 
             int j = 0;
 
-            // Elitism
-            if (ELITISM_K > 0) {
-                for (j = 0; j < ELITISM_K; j++) {
-                    newPopulation.setIndividual(j, pop.getFittest(j));
-                }
+            for (j = 0; j < ELITISM_K; j++) {
+                newPopulation.setIndividual(j, pop.getFittest(j));
             }
 
-            // build new Population
             while (j < POP_SIZE) {
-                // Selection
 
-                /*
-                 * Seleccionamos dos padres por ruleta
-                 */
-                indiv[0] = pop.selectParentByRouletteWheel();
-                indiv[1] = pop.selectParentByRouletteWheel();
+                indiv[0] = selectParent(pop);
+                indiv[1] = selectParent(pop);
 
-                // Crossover
+                if (REPLACEMENT_STRATEGY == 1) {
+                    if (Math.random() < CROSSOVER_RATE) {
 
-                /*
-                 * Aplicamos probabilidad de cruce, para ver si hay cruce. En caso de haber
-                 * cruze, los padres serán sustituidos por los hijos En caso contrario, los
-                 * padres sobreviven.
-                 */
-                if (Math.random() < CROSSOVER_RATE) {
-                    indiv = pop.onePointCrossover(indiv[0], indiv[1]);
+                        indiv = crossover(pop, indiv[0], indiv[1]);
 
-                    // Mutation
-                    /*
-                     * Aplicamos la probabilidad de mutación, para ver si se da mutación en los
-                     * individuos Estos individuos serán los que se han generado al producir el
-                     * cruce (hijos) o no (padres) Si se da que hay mutción, la mutación coedificada
-                     * el flip (cambio de bit) en uno de los bits de forma aleatoria
-                     */
+                        if (Math.random() < MUTATION_RATE) {
+                            mutation(indiv[0]);
+                        }
+                        if (Math.random() < MUTATION_RATE) {
+                            mutation(indiv[1]);
+                        }
+                    }
+
+                    newPopulation.setIndividual(j, indiv[0]);
+                    j++;
+                    newPopulation.setIndividual(j, indiv[1]);
+                    j++;
+                }
+                else if (REPLACEMENT_STRATEGY == 0) {
+
+                    newIndiv = crossover(pop, indiv[0], indiv[1]);
+
                     if (Math.random() < MUTATION_RATE) {
-                        indiv[0].mutate();
+                        mutation(newIndiv[0]);
                     }
                     if (Math.random() < MUTATION_RATE) {
-                        indiv[1].mutate();
+                        mutation(newIndiv[1]);
                     }
+
+                    Random rdm = new Random();
+                    newPopulation.setIndividual(j, indiv[rdm.nextInt(2)]);
+                    j++;
+                    newPopulation.setIndividual(j, newIndiv[rdm.nextInt(2)]);
+                    j++;
                 }
 
-                // add to new population
-                /*
-                 * Se añaden los dos nuevos individuos a la nueva población. Al ser
-                 * generacional, se sustituirán los individuos seleccionados para el cruce y ha
-                 * habido cruce o no.
-                 *
-                 */
-                newPopulation.setIndividual(j, indiv[0]);
-                j++;
-                newPopulation.setIndividual(j, indiv[1]);
-                j++;
-                /*
-                 * Se debe aumentar el contador indicando que hay dos individuos más en la nueva
-                 * población Se parará este bucle cuando la nueva población llegue al número de
-                 * individuos marcados por el usuario al comienzo de la confifuración.
-                 */
             }
-
-            /*
-             * Modelo generacional, cambio total de la población. Se ha incluido el elitismo
-             * y el resultado del cruce y la mutación.
-             */
             pop = newPopulation;
-
-            // reevaluate current population
-
-            /*
-             * Se evalua la nueva población, ya que es necesario para la siguiente selección
-             * por ruleta.
-             */
             pop.evalPopulation(schedule);
             i++;
         }
@@ -114,8 +183,15 @@ public class Driver {
         schedule.parseChromosome(pop.getFittest(0));
         System.out.println();
         System.out.println("Solution found in " + i + " generations");
-        System.out.println("Final solution fitness: " + pop.getFittest(0).getFitness());
+        System.out.println("Final solution fitness: " + pop.getFittest(0).getFitness() + ", Total fitness: " + pop.getFitness());
         System.out.println("Conflicts: " + schedule.calcConflicts());
+        data[0] = Integer.toString(i);
+        data[1] = Double.toString(pop.getFittest(0).getFitness());
+        data[2] = Double.toString(pop.getFitness());
+        csvWriter.writeNext(data);
 
+        csvWriter.close();
+
+        return schedule;
     }
 }

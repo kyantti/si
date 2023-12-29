@@ -1,3 +1,20 @@
 
 ¶
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(Ú¦Ì‰8øÚ¨†Ê1
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(Ú¦Ì‰8Ö‚¾·Ë1
+X	java:S125"<This block of commented-out lines of code should be removed.(Œ‘…¹8Û‚¾·Ë1
+H	java:S106©"+Replace this use of System.out by a logger.(Ž¢ƒ“8ß‚¾·Ë1
+S
+java:S2209ª"5Change this instance-reference to a static reference.(ê¼î‰8ß‚¾·Ë1
+M	java:S106«"+Replace this use of System.out by a logger.(ûÛÏçùÿÿÿÿ8ß‚¾·Ë1
+M	java:S106­"+Replace this use of System.out by a logger.(ì‡·ÿÿÿÿÿ8ß‚¾·Ë1
+S
+java:S2209®"5Change this instance-reference to a static reference.(ÏÍÇà8à‚¾·Ë1
+H	java:S106¯"+Replace this use of System.out by a logger.(øÜùê8à‚¾·Ë1
+M	java:S106±"+Replace this use of System.out by a logger.(…ë¸ÿÿÿÿÿ8à‚¾·Ë1
+X
+java:S2209²"5Change this instance-reference to a static reference.(†¾”Éúÿÿÿÿ8à‚¾·Ë1
+G	java:S106³"+Replace this use of System.out by a logger.(Á–‹8à‚¾·Ë1
+H	java:S106µ"+Replace this use of System.out by a logger.(æöÇ8à‚¾·Ë1
+S
+java:S2209¶"5Change this instance-reference to a static reference.(Ò”«¹8á‚¾·Ë1
+H	java:S106·"+Replace this use of System.out by a logger.(¥ÒåÒ8á‚¾·Ë1

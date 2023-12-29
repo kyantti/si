@@ -1,6 +1,6 @@
 package es.unex.cum.si.practica.controller;
 
-import es.unex.cum.si.practica.model.fenotype.GeneticAlgorithm;
+import es.unex.cum.si.practica.model.fenotype.Driver;
 import es.unex.cum.si.practica.model.genotype.Class;
 import es.unex.cum.si.practica.model.genotype.Group;
 import es.unex.cum.si.practica.model.genotype.Schedule;
@@ -15,8 +15,8 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        GeneticAlgorithm ga = new GeneticAlgorithm(500,50, 0.01, 0.8, 1, 5);
-        Schedule schedule = ga.run();
+        Driver driver = new Driver();
+        Schedule schedule = driver.runTeachers();
         for (Group group : Data.getInstance().getGroups().values()) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/es/unex/cum/si/practica/view/hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());

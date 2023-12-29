@@ -104,6 +104,7 @@ public class Controller {
         String text = "";
         text += "Subject: " +
                 Data.getInstance().getSubject(aClass.subjectId()).denomination() + "\n";
+        System.out.println(aClass);
         text += "Room: " +
                 Data.getInstance().getRoomSlot(aClass.roomId()).denomination() + "\n";
         switch (aClass.timeId()) {

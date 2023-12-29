@@ -1,3 +1,4 @@
 
+G	java:S106k"+Replace this use of System.out by a logger.(áç–‰8ÂÖ·Ë1
 d
-java:S1479m"BReduce the number of non-empty switch cases from 31 to at most 30.(ò¾•ëúÿÿÿÿ8¯Â‰‡Ê1
+java:S1479n"BReduce the number of non-empty switch cases from 31 to at most 30.(ò¾•ëúÿÿÿÿ8¯Â‰‡Ê1

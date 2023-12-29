@@ -32,13 +32,11 @@ public class Individual {
     }
 
     public Individual(int chromosomeLength) {
-        int[] individual;
-        individual = new int[chromosomeLength];
-        for (int gene = 0; gene < chromosomeLength; gene++) {
-            individual[gene] = gene;
+        int[] chromosome = new int[chromosomeLength];
+        for (int i = 0; i < chromosomeLength; i++) {
+            chromosome[i] = i;
         }
-
-        this.chromosome = individual;
+        this.chromosome = chromosome;
     }
 
     public int[] getChromosome() {
@@ -49,11 +47,6 @@ public class Individual {
         chromosome[offset] = gene;
     }
 
-    /**
-     * Calculate individual's fitness value
-     *
-     * @return fitness
-     */
     public double calcFitness(Schedule schedule) {
 
         // Create new schedule object to use -- cloned from an existing schedule
@@ -85,25 +78,16 @@ public class Individual {
         return output.toString();
     }
 
-    public boolean containsGene(int gene) {
-        for (int j : chromosome) {
-            if (j == gene) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int getGene(int geneIndex) {
         return chromosome[geneIndex];
     }
 
-    public void mutate() {
+    public void mutate(double rate) {
         Individual randomIndividual = new Individual(Data.getInstance());
         Random random = new Random();
         // Loop over individual's genes
         for (int i = 0; i < chromosome.length; i++) {
-            if (0.01 > Math.random()){
+            if (rate > Math.random()){
                 // Swap for new gene
                 chromosome[i] = randomIndividual.getGene(i);
             }
@@ -113,7 +97,7 @@ public class Individual {
     public void mutate2() {
         Random random = new Random();
 
-        // Elegir un punto aleatorio impar para cortar el cromosoma
+        // Elegir un punto aleatorio impar para cortar el cromosoma (impar)
         int cutPoint = (random.nextInt(chromosome.length / 2) * 2) + 1;
         System.out.println("cutPoint: " + cutPoint);
 

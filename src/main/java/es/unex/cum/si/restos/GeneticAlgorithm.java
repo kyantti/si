@@ -1,5 +1,7 @@
-package es.unex.cum.si.practica.model.fenotype;
+package es.unex.cum.si.restos;
 
+import es.unex.cum.si.practica.model.fenotype.Individual;
+import es.unex.cum.si.practica.model.fenotype.Population;
 import es.unex.cum.si.practica.model.genotype.Class;
 import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
@@ -233,6 +235,9 @@ public class GeneticAlgorithm {
         // Initialize population
         Population population = new Population(this.populationSize, Data.getInstance());
 
+        // Evaluate population
+        evalPopulation(population, schedule);
+
         // Keep track of current generation
         int generation = 1;
 
@@ -246,7 +251,9 @@ public class GeneticAlgorithm {
             for (int i = 0; i < elitismCount; i++) {
                 newPopulation.setIndividual(i, population.getFittest(i));
             }
+
             int i = elitismCount;
+
             while (i < population.size()) {
                 Individual parentA = population.selectParentByRouletteWheel();
                 Individual parentB = population.selectParentByRouletteWheel();
@@ -267,11 +274,10 @@ public class GeneticAlgorithm {
                     }
                 }
             }
-            population = newPopulation;
 
             // Apply mutation
-            for (i = elitismCount; i < population.size(); i++) {
-                Individual individual = population.getIndividual(i);
+            for (i = elitismCount; i < newPopulation.size(); i++) {
+                Individual individual = newPopulation.getIndividual(i);
                 Individual randomIndividual = new Individual(Data.getInstance());
 
                 // Loop over individual's genes
@@ -283,6 +289,8 @@ public class GeneticAlgorithm {
                     }
                 }
             }
+
+            population = newPopulation;
 
             // Evaluate population
             population.evalPopulation(schedule);
@@ -301,9 +309,73 @@ public class GeneticAlgorithm {
         return schedule;
     }
 
-    public static void main(String[] args) {
-        GeneticAlgorithm ga = new GeneticAlgorithm(500,50, 0.01, 0.8, 1, 5);
-        Schedule schedule = ga.run2();
-    }
+    /*public void runMine(){
+        // Create schedule object with an array of classes
+        Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
+
+        // Initialize population
+        Population population = new Population(POP_SIZE, Data.getInstance());
+        Population newPopulation;
+        // Evaluate population
+        population.evalPopulation(schedule);
+
+        // Keep track of current generation
+        int i = 0;
+        int j = 0;
+
+        // Start evolution loop
+        while (i < MAX_ITER && population.getFittest(0).getFitness() != 1) {
+            // Print fitness
+            System.out.println("Generation: " + i + ", Best fitness: " + population.getFittest(0).getFitness() + ", Total fitness: " + population.getFitness());
+
+            // Apply crossover
+            newPopulation = new Population(population.size());
+            for (j = 0; j < ELITISM_K; j++) {
+                newPopulation.setIndividual(j, population.getFittest(j));
+            }
+
+            while (j < population.size()) {
+
+                Individual parentA = population.selectParentByRouletteWheel();
+                Individual parentB = population.selectParentByRouletteWheel();
+
+                if (CROSSOVER_RATE > Math.random()) {
+                    Individual[] offspring = population.onePointCrossover(parentA, parentB);
+                    newPopulation.setIndividual(j, offspring[0]);
+                    j++;
+                    if (j < population.size()) {
+                        newPopulation.setIndividual(j, offspring[1]);
+                        j++;
+                    }
+                } else {
+                    newPopulation.setIndividual(j, parentA);
+                    j++;
+                    if (j < population.size()) {
+                        newPopulation.setIndividual(j, parentB);
+                        j++;
+                    }
+                }
+            }
+
+            // Apply mutation
+            for (j = ELITISM_K; j < newPopulation.size(); j++) {
+                Individual individual = newPopulation.getIndividual(j);
+                individual.mutate(MUTATION_RATE);
+            }
+
+            population = newPopulation;
+
+            population.evalPopulation(schedule);
+
+            i++;
+        }
+
+        // Print fitness
+        schedule.parseChromosome(population.getFittest(0));
+        System.out.println();
+        System.out.println("Solution found in " + i + " generations");
+        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness() + ", Total fitness: " + population.getFitness());
+        System.out.println("Conflicts: " + schedule.calcConflicts());
+    }*/
 
 }

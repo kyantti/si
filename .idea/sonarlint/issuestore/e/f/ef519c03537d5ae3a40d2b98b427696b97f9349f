@@ -9,8 +9,15 @@ H	java:S106Ì"+Replace this use of System.out by a logger.(®Ü¥¶8­…·ÜÊ1
 M	java:S106Í"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8­…·ÜÊ1
 H	java:S106Î"+Replace this use of System.out by a logger.(¥ šù8­…·ÜÊ1
 ^	java:S125Ñ"<This block of commented-out lines of code should be removed.(ªÓ¼áþÿÿÿÿ8ÄýûýÊ1
+p
+java:S3776å"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(à’®‹8÷ã°–Ë1
+H	java:S106õ"+Replace this use of System.out by a logger.(Êæ—‚8úã°–Ë1
+M	java:S106®"+Replace this use of System.out by a logger.(ªÓ¼áþÿÿÿÿ8‚ä°–Ë1
+H	java:S106¯"+Replace this use of System.out by a logger.(®Ü¥¶8ƒä°–Ë1
+M	java:S106°"+Replace this use of System.out by a logger.(œœ·÷ûÿÿÿÿ8ƒä°–Ë1
+H	java:S106±"+Replace this use of System.out by a logger.(¥ šù8„ä°–Ë1
 k
-java:S1128"IRemove this unused import 'es.unex.cum.si.practica.model.genotype.Class'.(·ü‘†ÿÿÿÿÿ8ÆýûýÊ1
+java:S1128"IRemove this unused import 'es.unex.cum.si.practica.model.genotype.Class'.(·ü‘†ÿÿÿÿÿ8•œŒ°Ë1
 U
 java:S11444"8Remove this unused private "crossoverPopulation" method.(ÇÇœÇ8ÈýûýÊ1
 R
