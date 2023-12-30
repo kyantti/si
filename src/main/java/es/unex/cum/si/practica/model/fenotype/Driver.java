@@ -46,6 +46,12 @@ public class Driver {
 
 
 
+    /**
+     * Selects a parent individual based on the specified selection algorithm.
+     *
+     * @param pop The population from which to select a parent.
+     * @return The selected parent individual.
+     */
     private static Individual selectParent(Population pop) {
         if (SELECTION_ALGORITHM == 0) {
             return pop.selectParentByRouletteWheel();
@@ -64,8 +70,17 @@ public class Driver {
         }
     }
 
+    /**
+     * Performs crossover between two parent individuals based on the specified
+     * crossover algorithm and points.
+     *
+     * @param population The population to which parents belong.
+     * @param parentA    The first parent individual.
+     * @param parentB    The second parent individual.
+     * @return An array of offspring individuals resulting from the crossover.
+     */
     private static Individual[] crossover(Population population, Individual parentA, Individual parentB) {
-        if (CROSSOVER_ALGORITHM == 0 && CROSSOVER_POINTS == 1) {
+        if (CROSSOVER_ALGORITHM == 0) {
             return population.onePointCrossover(parentA, parentB);
         }
         else if (CROSSOVER_ALGORITHM == 1 && CROSSOVER_POINTS > 1) {
@@ -79,6 +94,11 @@ public class Driver {
         }
     }
 
+    /**
+     * Applies mutation to the given individual based on the specified mutation algorithm.
+     *
+     * @param individual The individual to which mutation is applied.
+     */
     private static void mutation(Individual individual) {
         if (MUTATION_ALGORITHM == 0) {
             individual.mutate(MUTATION_RATE);
@@ -88,7 +108,13 @@ public class Driver {
         }
     }
 
-    public Schedule runTeachers() throws IOException {
+    /**
+     * Runs the evolutionary algorithm to generate a schedule.
+     *
+     * @return The generated schedule for teachers.
+     * @throws IOException If an I/O error occurs during the process.
+     */
+    public Schedule run() throws IOException {
 
         Schedule schedule = new Schedule(Data.getInstance().getNumOfClasses());
         Population pop = new Population(POP_SIZE, Data.getInstance());
@@ -185,6 +211,8 @@ public class Driver {
         System.out.println("Solution found in " + i + " generations");
         System.out.println("Final solution fitness: " + pop.getFittest(0).getFitness() + ", Total fitness: " + pop.getFitness());
         System.out.println("Conflicts: " + schedule.calcConflicts());
+        //schedule.calcQuality();
+        System.out.println("Dos: " + schedule);
         data[0] = Integer.toString(i);
         data[1] = Double.toString(pop.getFittest(0).getFitness());
         data[2] = Double.toString(pop.getFitness());

@@ -3,8 +3,6 @@
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 N
 src/main/java/module-info.java,1/c/1c89a5491fbfda3fb050196d6a239f20200296e7
-z
-Jsrc/main/java/es/unex/cum/si/practica/model/fenotype/GeneticAlgorithm.java,e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f
 t
 Dsrc/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java,d/3/d30b445db1dc38a063c3e146731f23cd37199dfd
 t
@@ -59,8 +57,6 @@ Q.idea/sonarlint/securityhotspotstore/d/3/d30b445db1dc38a063c3e146731f23cd37199d
 U
 %.mvn/wrapper/maven-wrapper.properties,3/2/32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
 
-Q.idea/sonarlint/securityhotspotstore/e/f/ef519c03537d5ae3a40d2b98b427696b97f9349f,f/2/f2fc6f5f18ff3f4e7384ecbd8ceef6dc616ba92c
-
 Q.idea/sonarlint/securityhotspotstore/0/0/00763d1f07d7b8cd24dee48eb525fbbb139f6168,4/e/4e65a3ba37e0860caa65a1c425633a8613562811
 
 Q.idea/sonarlint/securityhotspotstore/f/8/f8a02f301fe362596cfbf075569e91bc98a99923,f/a/fadd696edc3cad2275362b711fcab85862db8382
@@ -89,15 +85,11 @@ Q.idea/sonarlint/securityhotspotstore/4/e/4e65a3ba37e0860caa65a1c425633a86135628
 
 Q.idea/sonarlint/securityhotspotstore/f/a/fadd696edc3cad2275362b711fcab85862db8382,d/a/da85a1a37b0134fe338ce14aabed5dac7de3609f
 
-Q.idea/sonarlint/securityhotspotstore/f/2/f2fc6f5f18ff3f4e7384ecbd8ceef6dc616ba92c,b/c/bc1267b3a0754d879e0912382e9cea208e5810f7
-
 Q.idea/sonarlint/securityhotspotstore/3/2/32e074f71d16c1e88ac02aa83592ca6ad1fd98a8,7/3/733bfba9fd6ef1ec40633661eb0916a45f0a40db
 
 Q.idea/sonarlint/securityhotspotstore/3/4/34408b9fa4511e56c826fa6d2dd5ac6e81ff008c,a/b/ab981bb00d6aede4d58bfe7653c67afae190e7b3
 w
 G.idea/sonarlint/issuestore/f/a/fadd696edc3cad2275362b711fcab85862db8382,6/5/65d273732734d9dbf0aa6ae91d94998e78ef12e8
-w
-G.idea/sonarlint/issuestore/f/2/f2fc6f5f18ff3f4e7384ecbd8ceef6dc616ba92c,3/7/376f105349010437ce60d9da90a7f32f0f0368e4
 w
 G.idea/sonarlint/issuestore/6/7/671b872747a02f3597b5348f834d11df63efcc78,7/6/7625f69fca8adc9152944e7365c678aba06691f7
 w
@@ -398,13 +390,6 @@ _
 /src/main/java/es/unex/cum/si/maxone/MaxOne.java,5/f/5f452e5f432be7c563a5fbba2bc5193ef30edcd9
 c
 3src/main/java/es/unex/cum/si/maxone/Population.java,7/a/7a3f89d22a0523ab764eb47c89811ae9034f96df
-:
-
-result.csv,c/1/c1c9ebb695d88cbc365c4faace8ebd7bdbeaaf0d
->
-resultados.csv,3/5/350b8882238c47033d308485157576df225e3d87
-_
-/src/main/java/es/unex/cum/si/practica/Test.java,a/b/abef0f869e30a7586eb913e57b25e8adb330d36f
 i
 9src/main/java/es/unex/cum/si/restos/GeneticAlgorithm.java,0/e/0e8c68a520ed16aeca8ab4a00bb6aaf5667cb04d
 ]

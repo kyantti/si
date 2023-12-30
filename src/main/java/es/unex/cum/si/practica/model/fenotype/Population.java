@@ -1,20 +1,33 @@
 package es.unex.cum.si.practica.model.fenotype;
 
-
 import es.unex.cum.si.practica.model.genotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * The Population class stores an array of individuals and their total fitness
+ */
 public class Population {
     private final Individual[] individuals;
     private double fitness = -1;
 
+    /**
+     * Constructs an empty population with the given size.
+     *
+     * @param populationSize The size of the population.
+     */
     public Population(int populationSize) {
         this.individuals = new Individual[populationSize];
     }
 
+    /**
+     * Constructs a population with the given size and initializes individuals based on the provided data.
+     *
+     * @param populationSize The size of the population.
+     * @param data           The data containing information about groups, timeslots, and rooms.
+     */
     public Population(int populationSize, Data data) {
         // Initial individuals
         this.individuals = new Individual[populationSize];
@@ -28,6 +41,12 @@ public class Population {
         }
     }
 
+    /**
+     * Gets the fittest individual at the specified offset in the population.
+     *
+     * @param offset The offset indicating the position of the fittest individual.
+     * @return The fittest individual.
+     */
     public Individual getFittest(int offset) {
         // Order individuals by fitness
         Arrays.sort(individuals, (o1, o2) -> {
@@ -42,7 +61,19 @@ public class Population {
         return this.individuals[offset];
     }
 
-    public Individual selectParentByRouletteWheel(){
+    /**
+     * The probability that an individual is selected is
+     * proportional to their relative fitness, that is, to their fitness divided by the sum
+     * of the fitness of all individuals in the population. If an individual's fitness is
+     * double that of another, so will the probability of being selected. This
+     * method presents problems if the fitness of a few individuals is much higher
+     * (several orders of magnitude) to the rest, since these will be selected in a
+     * repeated and almost all the individuals of the next generation will be “children” of the
+     * same “parents” (little variation).
+     *
+     * @return The selected individual.
+     */
+    public Individual selectParentByRouletteWheel() {
         // Spin roulette wheel
         double rouletteWheelPosition = Math.random() * fitness;
         // Find parent
@@ -56,6 +87,14 @@ public class Population {
         return individuals[individuals.length - 1];
     }
 
+    /**
+     * The probability of selection of an individual is inversely
+     * proportional to the position it occupies after ordering all the individuals from greatest to
+     * lower fitness. This method is less aggressive than the roulette method when the
+     * difference between the greatest fitness is several orders of magnitude higher than the rest.
+     *
+     * @return The selected individual.
+     */
     public Individual rankSelection() {
         //sumatorio de los numeros consecutivos del ranking
         int totalranking = 0;
@@ -63,7 +102,7 @@ public class Population {
             totalranking += i;
         }
 
-        Individual[] copy = Arrays.copyOfRange(individuals,0, individuals.length);
+        Individual[] copy = Arrays.copyOfRange(individuals, 0, individuals.length);
         double[] ranks = new double[individuals.length];
 
         Arrays.sort(copy, (o1, o2) -> {
@@ -79,7 +118,7 @@ public class Population {
         for (int i = 1; i <= individuals.length; i++) {
             if (totalranking != 0) {
                 ranks[i - 1] = (double) i / totalranking * 100;
-            }  else {
+            } else {
                 ranks[i - 1] = 0;
             }
         }
@@ -95,6 +134,15 @@ public class Population {
         return copy[index];
     }
 
+    /**
+     * N individuals in the population are randomly selected (all with the same probability). From each couple
+     * Select the one with the highest fitness. Finally, the N finalists are compared and
+     * select the one with the highest fitness. This method tends to generate a distribution of the
+     * probability of selection more balanced than the previous N.
+     *
+     * @param tournamentSize
+     * @return
+     */
     public Individual selectParentByTournament(int tournamentSize) {
         // Shuffle the individuals to randomize the tournament selection
         shuffle();
@@ -114,8 +162,8 @@ public class Population {
         return tournament[0];
     }
 
-    public Individual selectParentByTruncation(int n){
-        Individual[] truncation = Arrays.copyOfRange(individuals,0, individuals.length);
+    public Individual selectParentByTruncation(int n) {
+        Individual[] truncation = Arrays.copyOfRange(individuals, 0, individuals.length);
         Arrays.sort(truncation, (o1, o2) -> {
             if (o1.getFitness() > o2.getFitness()) {
                 return -1;
@@ -128,57 +176,6 @@ public class Population {
         int randomPoint = new Random().nextInt(individuals.length - n);
         return truncation[randomPoint];
     }
-
-    /*public Individual onePointCrossover(Individual parentA, Individual parentB){
-        Individual offspring = new Individual(parentA.getChromosome().length);
-        int randomPoint = new Random().nextInt(parentA.getChromosome().length);
-
-        for (int i = 0; i < parentA.getChromosome().length; i++) {
-            if (i < randomPoint) {
-                offspring.setGene(i, parentA.getGene(i));
-            } else {
-                offspring.setGene(i, parentB.getGene(i));
-            }
-        }
-        return offspring;
-    }*/
-
-    /*public Individual nPointCrossover(Individual parentA, Individual parentB, int n){
-        Individual offspring = new Individual(parentA.getChromosome().length);
-        int[] randomPoints = new int[n];
-        int i = 0;
-        int j = 0;
-        for (i = 0; i < n; i++) {
-            randomPoints[i] = new Random().nextInt(parentA.getChromosome().length);
-        }
-
-        Arrays.sort(randomPoints);
-
-        for (i = 0; i < n; i++){
-            if (i % 2 == 0){
-                for (j = randomPoints[i]; j < randomPoints[i+1]; j++){
-                    offspring.setGene(j, parentA.getGene(j));
-                }
-            } else {
-                for (j = randomPoints[i]; j < randomPoints[i+1]; j++){
-                    offspring.setGene(j, parentB.getGene(j));
-                }
-            }
-        }
-        return offspring;
-    }*/
-
-    /*public Individual uniformCrossover(Individual parentA, Individual parentB){
-        Individual offspring = new Individual(parentA.getChromosome().length);
-        for (int i = 0; i < parentA.getChromosome().length; i++) {
-            if (Math.random() < 0.5) {
-                offspring.setGene(i, parentA.getGene(i));
-            } else {
-                offspring.setGene(i, parentB.getGene(i));
-            }
-        }
-        return offspring;
-    }*/
 
     public Individual[] onePointCrossover(Individual parentA, Individual parentB) {
         Individual[] newIndividuals = new Individual[2];
@@ -200,7 +197,7 @@ public class Population {
         return newIndividuals;
     }
 
-    public Individual[] nPointCrossover(Individual parentA, Individual parentB, int n){
+    public Individual[] nPointCrossover(Individual parentA, Individual parentB, int n) {
         int[] randomPoints = new int[n];
         Individual[] newIndividuals = new Individual[2];
         int i = 0;
@@ -214,16 +211,15 @@ public class Population {
         newIndividuals[0] = new Individual(parentA.getChromosome().length);
         newIndividuals[1] = new Individual(parentA.getChromosome().length);
 
-        for (i = 0; i < n; i++){
-            if (i % 2 == 0){
-                while(j < randomPoints[i]){
+        for (i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                while (j < randomPoints[i]) {
                     newIndividuals[0].setGene(j, parentA.getGene(j));
                     newIndividuals[1].setGene(j, parentB.getGene(j));
                     j++;
                 }
-            }
-            else{
-                while (j < randomPoints[i]){
+            } else {
+                while (j < randomPoints[i]) {
                     newIndividuals[0].setGene(j, parentB.getGene(j));
                     newIndividuals[1].setGene(j, parentA.getGene(j));
                     j++;
@@ -233,7 +229,7 @@ public class Population {
         return newIndividuals;
     }
 
-    public Individual[] uniformCrossover(Individual parentA, Individual parentB){
+    public Individual[] uniformCrossover(Individual parentA, Individual parentB) {
         Individual[] newIndividuals = new Individual[2];
         newIndividuals[0] = new Individual(parentA.getChromosome().length);
         newIndividuals[1] = new Individual(parentA.getChromosome().length);

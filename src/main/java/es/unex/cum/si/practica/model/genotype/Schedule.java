@@ -2,8 +2,11 @@ package es.unex.cum.si.practica.model.genotype;
 
 import es.unex.cum.si.practica.model.fenotype.Individual;
 import es.unex.cum.si.practica.model.util.Data;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class Schedule {
     private Class[] classes;
@@ -62,46 +65,62 @@ public class Schedule {
         return conflicts;
     }
 
-    public int calcTimeGaps() {
-        int timeGaps = 0;
-        Class[] sortedClasses = Arrays.copyOf(classes, classes.length);
-        Arrays.sort(sortedClasses, Comparator.comparingInt(Class::groupId).thenComparingInt(Class::timeId));
+    public int calcQuality() {
+        int totalDays = Data.getInstance().getNumDays();
+        int totalGroups = Data.getInstance().getGroups().size();
+        int totalPeriods = Data.getInstance().getNumPeriods();
+        List<Integer>[][] timeIdsPerGroupPerDay = new ArrayList[totalGroups][totalDays];
+        int groupId;
+        int timeId;
+        int day;
+        int penalty = 0;
 
-        for (int i = 0; i < sortedClasses.length; i++) {
-            for (int j = i + 1; j < sortedClasses.length; j++) {
-                if (sortedClasses[i].groupId() == sortedClasses[j].groupId() && (Math.abs(sortedClasses[i].timeId() - sortedClasses[j].timeId()) > 1)) {
-                    timeGaps += Math.abs(sortedClasses[i].timeId() - sortedClasses[j].timeId());
+        for (Class scheduleClass : classes) {
+            groupId = scheduleClass.groupId();
+            timeId = scheduleClass.timeId();
+
+            // Obtener el día correspondiente al timeId
+            day = (timeId / totalPeriods) % totalDays;
+
+            // Inicializar la lista si es necesario
+            if (timeIdsPerGroupPerDay[groupId][day] == null) {
+                timeIdsPerGroupPerDay[groupId][day] = new ArrayList<>();
+            }
+
+            // Agregar el timeId a la lista
+            timeIdsPerGroupPerDay[groupId][day].add(timeId);
+        }
+
+        // Penalizar más de 3 clases por día
+        for (int i = 0; i < totalGroups; i++) {
+            for (int j = 0; j < totalDays; j++) {
+                if (timeIdsPerGroupPerDay[i][j] != null && timeIdsPerGroupPerDay[i][j].size() > 3) {
+                    penalty = (penalty + 1) * 2;
                 }
             }
         }
-        return timeGaps;
-    }
 
-    public int calcQuality() {
-        int quality = 0;
-        // If a group has more than 3 classes in a row, the quality is increased by 1
-        //Sort classes by time slot id (lower to higher)
-        Class[] aClasses = Arrays.copyOf(classes, classes.length);
-        Class[] bClasses = Arrays.copyOf(classes, classes.length);
-        Arrays.sort(aClasses, Comparator.comparingInt(Class::timeId));
-        Arrays.sort(aClasses, Comparator.comparingInt(Class::groupId));
-
-        //Sort classes by group id (lower to higher)
-        Arrays.sort(bClasses, Comparator.comparingInt(Class::groupId));
-        Arrays.sort(bClasses, Comparator.comparingInt(Class::groupId));
-        for (Class classA : aClasses) {
-            int count = 0;
-            for (Class classB : bClasses) {
-                if (classA.groupId() == classB.groupId() && (Math.abs(classA.timeId() - classB.timeId()) == 1)) {
-                    count++;
-                    if (count > 3) {
-                        quality++;
+        // Penalizar no consecutividad de clases
+        for (int i = 0; i < totalGroups; i++) {
+            for (int j = 0; j < totalDays; j++) {
+                List<Integer> timeIds = timeIdsPerGroupPerDay[i][j];
+                if (timeIds != null) {
+                    timeIds.sort(Comparator.naturalOrder());
+                    if (timeIds.get(0) % 3 != 0){
+                        penalty++;
+                    }
+                    for (int k = 0; k < timeIds.size() - 1; k++) {
+                        int currentClassId = timeIds.get(k);
+                        int nextClassId = timeIds.get(k + 1);
+                        if (nextClassId - currentClassId > 1) {
+                            penalty += nextClassId - currentClassId;
+                        }
                     }
                 }
             }
         }
-        return quality;
-    }
 
+        return penalty;
+    }
 
 }

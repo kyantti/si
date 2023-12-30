@@ -20,11 +20,19 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        Test test = new Test();
-        test.mutate2();
-        for (int i = 0; i < chromosome.length; i++) {
-            System.out.print(chromosome[i] + ", ");
-        }
+        int totalDias = 5; // Número total de días en la semana
+        int periodosPorDia = 6; // Número de periodos por día
+        int totalPeriodos = totalDias * periodosPorDia; // Número total de periodos en la semana
+
+        // Supongamos que tienes un time id específico
+        int timeId = 12;
+
+        // Calcular el día y el periodo
+        int dia = (timeId / periodosPorDia) % totalDias;
+        int periodo = timeId % periodosPorDia;
+
+        // Imprimir resultados
+        System.out.println("El time id " + timeId + " corresponde al día " + dia + " y al periodo " + periodo);
     }
 
 }

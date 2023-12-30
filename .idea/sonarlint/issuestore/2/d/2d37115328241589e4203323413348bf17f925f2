@@ -1,12 +1,14 @@
 
 o
-java:S3776["RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(ºë®8†Êò¶Ë1
-G	java:S106f"+Replace this use of System.out by a logger.(²îáñ8‰Êò¶Ë1
-L	java:S106h"+Replace this use of System.err by a logger.(ª¼Í¼úÿÿÿÿ8‰Êò¶Ë1
-G	java:S106z"+Replace this use of System.out by a logger.(ÿ˜Ş™8ŠÊò¶Ë1
+java:S3776u"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(Ùûİ8ÎÊÖË1
+H	java:S106€"+Replace this use of System.out by a logger.(²îáñ8ÕÊÖË1
+M	java:S106‚"+Replace this use of System.err by a logger.(ª¼Í¼úÿÿÿÿ8ÖÊÖË1
+H	java:S106”"+Replace this use of System.out by a logger.(ÿ˜Ş™8ÙÊÖË1
 A
-java:S2119ª"Save and re-use this "Random".(€Õéšúÿÿÿÿ8Êò¶Ë1
-M	java:S106¸"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Êò¶Ë1
-M	java:S106¹"+Replace this use of System.out by a logger.(Íı¥¹ùÿÿÿÿ8Êò¶Ë1
-H	java:S106º"+Replace this use of System.out by a logger.(·™ìò8Êò¶Ë1
-H	java:S106»"+Replace this use of System.out by a logger.(¥ šù8Êò¶Ë1
+java:S2119Ä"Save and re-use this "Random".(€Õéšúÿÿÿÿ8ŞÊÖË1
+M	java:S106Ò"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8ßÊÖË1
+M	java:S106Ó"+Replace this use of System.out by a logger.(Íı¥¹ùÿÿÿÿ8àÊÖË1
+H	java:S106Ô"+Replace this use of System.out by a logger.(·™ìò8àÊÖË1
+H	java:S106Õ"+Replace this use of System.out by a logger.(¥ šù8àÊÖË1
+H	java:S106×"+Replace this use of System.out by a logger.(æ„×ş8áÊÖË1
+X	java:S125Ö"<This block of commented-out lines of code should be removed.(ıçı$8áÊÖË1

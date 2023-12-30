@@ -14,6 +14,8 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Data {
+    private final int numDays;
+    private final int numPeriods;
     private static final HashMap<Integer, Time> timeSlots = new HashMap<>();
     private static final HashMap<Integer, Room> roomSlots = new HashMap<>();
     private static final HashMap<Integer, Subject> subjects = new HashMap<>();
@@ -100,8 +102,8 @@ public class Data {
             e.printStackTrace();
         }
 
-        int numDays = Integer.parseInt(properties.getProperty("DAYS"));
-        int numPeriods = Integer.parseInt(properties.getProperty("PERIODS"));
+        numDays = Integer.parseInt(properties.getProperty("DAYS"));
+        numPeriods = Integer.parseInt(properties.getProperty("PERIODS"));
         int numRooms = Integer.parseInt(properties.getProperty("ROOMS"));
         int numSubjects = Integer.parseInt(properties.getProperty("SUBJECTS"));
         int numGroups = Integer.parseInt(properties.getProperty("GROUPS"));
@@ -120,13 +122,12 @@ public class Data {
             subjects.put(i, new Subject(i, "Subject " + i));
         }
 
-        // asignar a cada grupo un conjunto de asignaturas, al primer grupo las primeras 6, al segundo las siguientes 6, etc.
         for (i = 0; i < numGroups; i++) {
             int[] groupSubjects = new int[numSubjects];
             for (int j = 0; j < groupSubjects.length; j++) {
                 groupSubjects[j] = i * groupSubjects.length + j;
             }
-            groups.put(i + 1, new Group(i + 1, groupSubjects));
+            groups.put(i, new Group(i, groupSubjects));
         }
     }
 
@@ -151,6 +152,14 @@ public class Data {
         return roomSlots.get(roomId);
     }
 
+    public int getNumDays() {
+        return numDays;
+    }
+
+    public int getNumPeriods() {
+        return numPeriods;
+    }
+
     public Room getRoomSlot(int id) {
         return roomSlots.get(id);
     }
@@ -161,28 +170,6 @@ public class Data {
 
     public int getNumOfClasses() {
         return subjects.size() * SUBJECT_HOURS_PER_WEEK;
-    }
-
-    public static void main(String[] args) {
-        Data data = Data.getInstance();
-        // show all data
-        System.out.println("Time slots:");
-        for (Time time : data.timeSlots.values()) {
-            System.out.println(time);
-        }
-        System.out.println("Room slots:");
-        for (Room room : data.roomSlots.values()) {
-            System.out.println(room);
-        }
-        System.out.println("Subjects:");
-        for (Subject subject : data.subjects.values()) {
-            System.out.println(subject);
-        }
-        System.out.println("Groups:");
-        for (Group group : data.groups.values()) {
-            System.out.println(group);
-        }
-
     }
 
 }

@@ -16,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Driver driver = new Driver();
-        Schedule schedule = driver.runTeachers();
+        Schedule schedule = driver.run();
         for (Group group : Data.getInstance().getGroups().values()) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/es/unex/cum/si/practica/view/hello-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());

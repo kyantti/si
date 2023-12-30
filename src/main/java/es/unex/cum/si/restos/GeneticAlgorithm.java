@@ -378,4 +378,96 @@ public class GeneticAlgorithm {
         System.out.println("Conflicts: " + schedule.calcConflicts());
     }*/
 
+    /*
+    public int calcTimeGaps() {
+        int timeGaps = 0;
+        Class[] sortedClasses = Arrays.copyOf(classes, classes.length);
+        Arrays.sort(sortedClasses, Comparator.comparingInt(Class::groupId).thenComparingInt(Class::timeId));
+
+        for (int i = 0; i < sortedClasses.length; i++) {
+            for (int j = i + 1; j < sortedClasses.length; j++) {
+                if (sortedClasses[i].groupId() == sortedClasses[j].groupId() && (Math.abs(sortedClasses[i].timeId() - sortedClasses[j].timeId()) > 1)) {
+                    timeGaps += Math.abs(sortedClasses[i].timeId() - sortedClasses[j].timeId());
+                }
+            }
+        }
+        return timeGaps;
+    }
+
+    public int calcQuality() {
+        int quality = 0;
+        // If a group has more than 3 classes in a row, the quality is increased by 1
+        //Sort classes by time slot id (lower to higher)
+        Class[] aClasses = Arrays.copyOf(classes, classes.length);
+        Class[] bClasses = Arrays.copyOf(classes, classes.length);
+        Arrays.sort(aClasses, Comparator.comparingInt(Class::timeId));
+        Arrays.sort(aClasses, Comparator.comparingInt(Class::groupId));
+
+        //Sort classes by group id (lower to higher)
+        Arrays.sort(bClasses, Comparator.comparingInt(Class::groupId));
+        Arrays.sort(bClasses, Comparator.comparingInt(Class::groupId));
+        for (Class classA : aClasses) {
+            int count = 0;
+            for (Class classB : bClasses) {
+                if (classA.groupId() == classB.groupId() && (Math.abs(classA.timeId() - classB.timeId()) == 1)) {
+                    count++;
+                    if (count > 3) {
+                        quality++;
+                    }
+                }
+            }
+        }
+        return quality;
+    }
+    /*public Individual onePointCrossover(Individual parentA, Individual parentB){
+        Individual offspring = new Individual(parentA.getChromosome().length);
+        int randomPoint = new Random().nextInt(parentA.getChromosome().length);
+
+        for (int i = 0; i < parentA.getChromosome().length; i++) {
+            if (i < randomPoint) {
+                offspring.setGene(i, parentA.getGene(i));
+            } else {
+                offspring.setGene(i, parentB.getGene(i));
+            }
+        }
+        return offspring;
+    }*/
+
+    /*public Individual nPointCrossover(Individual parentA, Individual parentB, int n){
+        Individual offspring = new Individual(parentA.getChromosome().length);
+        int[] randomPoints = new int[n];
+        int i = 0;
+        int j = 0;
+        for (i = 0; i < n; i++) {
+            randomPoints[i] = new Random().nextInt(parentA.getChromosome().length);
+        }
+
+        Arrays.sort(randomPoints);
+
+        for (i = 0; i < n; i++){
+            if (i % 2 == 0){
+                for (j = randomPoints[i]; j < randomPoints[i+1]; j++){
+                    offspring.setGene(j, parentA.getGene(j));
+                }
+            } else {
+                for (j = randomPoints[i]; j < randomPoints[i+1]; j++){
+                    offspring.setGene(j, parentB.getGene(j));
+                }
+            }
+        }
+        return offspring;
+    }*/
+
+    /*public Individual uniformCrossover(Individual parentA, Individual parentB){
+        Individual offspring = new Individual(parentA.getChromosome().length);
+        for (int i = 0; i < parentA.getChromosome().length; i++) {
+            if (Math.random() < 0.5) {
+                offspring.setGene(i, parentA.getGene(i));
+            } else {
+                offspring.setGene(i, parentB.getGene(i));
+            }
+        }
+        return offspring;
+    }*/
+
 }
