@@ -7,7 +7,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * The Population class stores an array of individuals and their total fitness
+ * The Population class stores an array of individuals and their total fitness. It also provides
+ * methods to access and update the individuals.
  */
 public class Population {
     private final Individual[] individuals;
@@ -162,6 +163,12 @@ public class Population {
         return tournament[0];
     }
 
+    /**
+     * Random selections of individuals are made, having first discarded the individuals with the lowest fitness from the population.
+     * @param n
+     * @return The selected individual.
+     */
+
     public Individual selectParentByTruncation(int n) {
         Individual[] truncation = Arrays.copyOfRange(individuals, 0, individuals.length);
         Arrays.sort(truncation, (o1, o2) -> {
@@ -177,6 +184,13 @@ public class Population {
         return truncation[randomPoint];
     }
 
+    /**
+     * Performs one-point crossover between two parent individuals.
+     *
+     * @param parentA The first parent individual.
+     * @param parentB The second parent individual.
+     * @return An array of offspring individuals resulting from the crossover.
+     */
     public Individual[] onePointCrossover(Individual parentA, Individual parentB) {
         Individual[] newIndividuals = new Individual[2];
         newIndividuals[0] = new Individual(parentA.getChromosome().length);
@@ -197,6 +211,14 @@ public class Population {
         return newIndividuals;
     }
 
+    /**
+     * Performs n-point crossover between two parent individuals.
+     *
+     * @param parentA The first parent individual.
+     * @param parentB The second parent individual.
+     * @param n       The number of crossover points.
+     * @return An array of offspring individuals resulting from the crossover.
+     */
     public Individual[] nPointCrossover(Individual parentA, Individual parentB, int n) {
         int[] randomPoints = new int[n];
         Individual[] newIndividuals = new Individual[2];
@@ -229,6 +251,13 @@ public class Population {
         return newIndividuals;
     }
 
+    /**
+     * Performs uniform crossover between two parent individuals.
+     *
+     * @param parentA The first parent individual.
+     * @param parentB The second parent individual.
+     * @return An array of offspring individuals resulting from the crossover.
+     */
     public Individual[] uniformCrossover(Individual parentA, Individual parentB) {
         Individual[] newIndividuals = new Individual[2];
         newIndividuals[0] = new Individual(parentA.getChromosome().length);
@@ -246,6 +275,11 @@ public class Population {
         return newIndividuals;
     }
 
+    /**
+     * Evaluates the fitness of the entire population based on the provided schedule.
+     *
+     * @param schedule The schedule used for fitness calculation.
+     */
     public void evalPopulation(Schedule schedule) {
         double fitness = 0;
         for (Individual individual : individuals) {
@@ -254,22 +288,47 @@ public class Population {
         this.fitness = fitness;
     }
 
+    /**
+     * Gets the fitness value of the population.
+     *
+     * @return The fitness value of the population.
+     */
     public double getFitness() {
         return fitness;
     }
 
+    /**
+     * Gets the size of the population.
+     *
+     * @return The size of the population.
+     */
     public int size() {
         return this.individuals.length;
     }
 
+    /**
+     * Sets an individual at the specified offset in the population.
+     *
+     * @param offset     The offset where the individual is to be set.
+     * @param individual The individual to be set.
+     */
     public void setIndividual(int offset, Individual individual) {
         individuals[offset] = individual;
     }
 
+    /**
+     * Gets an individual at the specified offset in the population.
+     *
+     * @param offset The offset indicating the position of the individual.
+     * @return The individual at the specified offset.
+     */
     public Individual getIndividual(int offset) {
         return individuals[offset];
     }
 
+    /**
+     * Shuffles the individuals in the population to randomize their order.
+     */
     public void shuffle() {
         Random rnd = new Random();
         for (int i = individuals.length - 1; i > 0; i--) {

@@ -4,48 +4,76 @@ import es.unex.cum.si.practica.model.fenotype.Individual;
 import es.unex.cum.si.practica.model.util.Data;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class Schedule {
-    private Class[] classes;
+/**
+ * The class Schedule stores the classes of a schedule. This is a translation of the chromosome to a genotype, so it can be easily evaluated.
+ */
 
+public class Schedule {
+    private final Class[] classes;
+
+    /**
+     * Constructs a schedule with a specified number of classes.
+     *
+     * @param numOfClasses The number of classes in the schedule.
+     */
     public Schedule(int numOfClasses) {
         classes = new Class[numOfClasses];
     }
 
+    /**
+     * Constructs a schedule by cloning another schedule.
+     *
+     * @param cloneable The schedule to clone.
+     */
     public Schedule(Schedule cloneable) {
         this.classes = cloneable.getClasses();
     }
 
+    /**
+     * Translates the chromosome of an individual to a schedule.
+     *
+     * @param individual The individual with a chromosome to parse.
+     */
     public void parseChromosome(Individual individual) {
         // Each subject has 2 classes per week (4 hours per week)
         int[] chromosome = individual.getChromosome();
-        int chromosomePos = 0;
-        int classIndex = 0;
+        int i = 0;
+        int j = 0;
         int timeId;
         int roomId;
 
         for (Group group : Data.getInstance().getGroups().values()) {
             int[] subjectIds = group.subjectIds();
             for (int subjectId : subjectIds) {
-                // First assignment
-                timeId = chromosome[chromosomePos++];
-                roomId = chromosome[chromosomePos++];
-                classes[classIndex++] = new Class(classIndex, group.id(), timeId, roomId, subjectId);
-                // Second assignment
-                timeId = chromosome[chromosomePos++];
-                roomId = chromosome[chromosomePos++];
-                classes[classIndex++] = new Class(classIndex, group.id(), timeId, roomId, subjectId);
+                // +2h
+                timeId = chromosome[i++];
+                roomId = chromosome[i++];
+                classes[j++] = new Class(j, group.id(), timeId, roomId, subjectId);
+                // +2h
+                timeId = chromosome[i++];
+                roomId = chromosome[i++];
+                classes[j++] = new Class(j, group.id(), timeId, roomId, subjectId);
             }
         }
     }
 
+    /**
+     * Gets the array of classes representing the schedule.
+     *
+     * @return The array of classes.
+     */
     public Class[] getClasses() {
         return classes;
     }
 
+    /**
+     * Calculates the number of conflicts in the schedule.
+     *
+     * @return The number of conflicts.
+     */
     public int calcConflicts() {
         int conflicts = 0;
         for (int i = 0; i < classes.length; i++) {
@@ -65,55 +93,62 @@ public class Schedule {
         return conflicts;
     }
 
+    /**
+     * Calculates the quality of the schedule based on:
+     * - The number of days with more than 3 classes.
+     * - The number of classes that are not consecutive.
+     * - The number of classes that are not in the first period of the morning or the first period of the afternoon.
+     *
+     * @return The quality score of the schedule.
+     */
     public int calcQuality() {
-        int totalDays = Data.getInstance().getNumDays();
-        int totalGroups = Data.getInstance().getGroups().size();
-        int totalPeriods = Data.getInstance().getNumPeriods();
-        List<Integer>[][] timeIdsPerGroupPerDay = new ArrayList[totalGroups][totalDays];
         int groupId;
         int timeId;
         int day;
+        int totalPeriods = Data.getInstance().getNumPeriods();
+        int totalDays = Data.getInstance().getNumDays();
+        int totalGroups = Data.getInstance().getGroups().size();
+        List<Integer>[][] timeIdsPerGroupPerDay = new ArrayList[totalGroups][totalDays];
+        int i;
+        int j;
         int penalty = 0;
+        int currentClassId;
+        int nextClassId;
+        int timeGap;
 
         for (Class scheduleClass : classes) {
             groupId = scheduleClass.groupId();
             timeId = scheduleClass.timeId();
 
-            // Obtener el día correspondiente al timeId
             day = (timeId / totalPeriods) % totalDays;
 
-            // Inicializar la lista si es necesario
             if (timeIdsPerGroupPerDay[groupId][day] == null) {
                 timeIdsPerGroupPerDay[groupId][day] = new ArrayList<>();
             }
 
-            // Agregar el timeId a la lista
             timeIdsPerGroupPerDay[groupId][day].add(timeId);
         }
 
-        // Penalizar más de 3 clases por día
-        for (int i = 0; i < totalGroups; i++) {
-            for (int j = 0; j < totalDays; j++) {
-                if (timeIdsPerGroupPerDay[i][j] != null && timeIdsPerGroupPerDay[i][j].size() > 3) {
-                    penalty = (penalty + 1) * 2;
-                }
-            }
-        }
-
-        // Penalizar no consecutividad de clases
-        for (int i = 0; i < totalGroups; i++) {
-            for (int j = 0; j < totalDays; j++) {
+        for (i = 0; i < totalGroups; i++) {
+            for (j = 0; j < totalDays; j++) {
                 List<Integer> timeIds = timeIdsPerGroupPerDay[i][j];
                 if (timeIds != null) {
+                    // Penalize if there are more than 3 classes in a day
+                    if (timeIds.size() > 3){
+                        penalty += 2;
+                    }
                     timeIds.sort(Comparator.naturalOrder());
+                    // Penalize if the first class is not in the first period of the morning or the first period of the afternoon
                     if (timeIds.get(0) % 3 != 0){
-                        penalty++;
+                        penalty += 1;
                     }
                     for (int k = 0; k < timeIds.size() - 1; k++) {
-                        int currentClassId = timeIds.get(k);
-                        int nextClassId = timeIds.get(k + 1);
-                        if (nextClassId - currentClassId > 1) {
-                            penalty += nextClassId - currentClassId;
+                        currentClassId = timeIds.get(k);
+                        nextClassId = timeIds.get(k + 1);
+                        timeGap = nextClassId - currentClassId;
+                        // Penalize if the classes are not consecutive
+                        if (timeGap > 1) {
+                            penalty += timeGap;
                         }
                     }
                 }

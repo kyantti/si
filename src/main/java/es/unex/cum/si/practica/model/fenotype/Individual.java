@@ -76,16 +76,13 @@ public class Individual {
      * @return The calculated fitness value.
      */
     public double calcFitness(Schedule schedule) {
+        Schedule copy = new Schedule(schedule);
+        copy.parseChromosome(this);
 
-        // Create new schedule object to use -- cloned from an existing schedule
-        Schedule threadSchedule = new Schedule(schedule);
-        threadSchedule.parseChromosome(this);
-
-        // Calculate fitness
-        int clashes = threadSchedule.calcConflicts();
-        int quality = threadSchedule.calcQuality();
-        int k = 100;
-        double fitness = 1 / ((double) ((clashes + 1) * k + quality));
+        int conflicts = copy.calcConflicts();
+        int quality = copy.calcQuality();
+        int k = 10;
+        double fitness = 1 / ((double) ((conflicts + 1) * k + quality));
 
         this.fitness = fitness;
 
@@ -125,33 +122,28 @@ public class Individual {
 
     /**
      * Applies mutation to the individual's chromosome with the given mutation rate.
+     * This mutation involves swapping a gene with a random gene from a random individual.
      *
      * @param rate The mutation rate.
      */
     public void mutate(double rate) {
         Individual randomIndividual = new Individual(Data.getInstance());
-        Random random = new Random();
-        // Loop over individual's genes
         for (int i = 0; i < chromosome.length; i++) {
             if (rate > Math.random()){
-                // Swap for new gene
                 chromosome[i] = randomIndividual.getGene(i);
             }
         }
     }
 
     /**
-     * Applies a specific type of mutation to the individual's chromosome.
-     * This mutation involves reversing a portion of the chromosome.
+     * Applies a custom type of mutation to the individual's chromosome.
+     * This mutation involves reversing a portion of the chromosome from a random point to the end.
+     * The random point must be odd.
      */
     public void mutate2() {
         Random random = new Random();
-
-        // Elegir un punto aleatorio impar para cortar el cromosoma (impar)
         int cutPoint = (random.nextInt(chromosome.length / 2) * 2) + 1;
-        System.out.println("cutPoint: " + cutPoint);
 
-        // Dar vuelta a la parte del cromosoma después del punto de corte
         for (int i = cutPoint, j = chromosome.length - 1; i < j; i++, j--) {
             int temp = chromosome[i];
             chromosome[i] = chromosome[j];
