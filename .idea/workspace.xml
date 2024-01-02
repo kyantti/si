@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="kkkkklk">
+    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/es/unex/cum/si/practica/config/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/es/unex/cum/si/practica/config/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resultados.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/resultados.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +136,8 @@
       <workItem from="1703613091179" duration="10039000" />
       <workItem from="1703669555267" duration="17624000" />
       <workItem from="1703698774389" duration="9397000" />
-      <workItem from="1704037413637" duration="3429000" />
+      <workItem from="1704037413637" duration="3475000" />
+      <workItem from="1704136025959" duration="1083000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -173,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703712451591</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="terminado">
+      <option name="closed" value="true" />
+      <created>1704055970253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704055970253</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +190,8 @@
     <MESSAGE value="en ello" />
     <MESSAGE value="sigo" />
     <MESSAGE value="kkkkklk" />
-    <option name="LAST_COMMIT_MESSAGE" value="kkkkklk" />
+    <MESSAGE value="terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminado" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
