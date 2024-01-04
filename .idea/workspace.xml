@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado">
+    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado creo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/resultados.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/resultados.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,8 @@
       <workItem from="1703669555267" duration="17624000" />
       <workItem from="1703698774389" duration="9397000" />
       <workItem from="1704037413637" duration="3475000" />
-      <workItem from="1704136025959" duration="1083000" />
+      <workItem from="1704136025959" duration="1107000" />
+      <workItem from="1704211989136" duration="1597000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -179,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704055970253</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="terminado creo">
+      <option name="closed" value="true" />
+      <created>1704204774531</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704204774531</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +201,8 @@
     <MESSAGE value="sigo" />
     <MESSAGE value="kkkkklk" />
     <MESSAGE value="terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="terminado" />
+    <MESSAGE value="terminado creo" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminado creo" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -220,12 +220,21 @@ public class Population {
      * @return An array of offspring individuals resulting from the crossover.
      */
     public Individual[] nPointCrossover(Individual parentA, Individual parentB, int n) {
-        int[] randomPoints = new int[n];
-        Individual[] newIndividuals = new Individual[2];
         int i = 0;
         int j = 0;
+        int[] randomPoints = new int[n];
+        Random random = new Random();
+        Individual[] newIndividuals = new Individual[2];
+
+        // Generate unique random points
         for (i = 0; i < n; i++) {
-            randomPoints[i] = new Random().nextInt(parentA.getChromosome().length);
+            randomPoints[i] = random.nextInt(parentA.getChromosome().length);
+            for (j = 0; j < i; j++) {
+                if (randomPoints[j] == randomPoints[i]) {
+                    i--; // Repeat the loop to generate a unique random point
+                    break;
+                }
+            }
         }
 
         Arrays.sort(randomPoints);
@@ -234,20 +243,17 @@ public class Population {
         newIndividuals[1] = new Individual(parentA.getChromosome().length);
 
         for (i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                while (j < randomPoints[i]) {
+            for (j = 0; j < randomPoints[i]; j++) {
+                if (i % 2 == 0) {
                     newIndividuals[0].setGene(j, parentA.getGene(j));
                     newIndividuals[1].setGene(j, parentB.getGene(j));
-                    j++;
-                }
-            } else {
-                while (j < randomPoints[i]) {
+                } else {
                     newIndividuals[0].setGene(j, parentB.getGene(j));
                     newIndividuals[1].setGene(j, parentA.getGene(j));
-                    j++;
                 }
             }
         }
+
         return newIndividuals;
     }
 
