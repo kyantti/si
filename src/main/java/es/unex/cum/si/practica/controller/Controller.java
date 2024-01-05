@@ -1,11 +1,15 @@
 package es.unex.cum.si.practica.controller;
 
-import es.unex.cum.si.practica.model.genotype.Class;
+import es.unex.cum.si.practica.model.phenotype.Class;
 import es.unex.cum.si.practica.model.util.Data;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
+/**
+ * The Controller class is the controller of the application, it shows the schedule of a group using a grid.
+ * The grid is a 5x6 grid, where the columns are the days of the week and the rows are the different periods.
+ */
 public class Controller {
     @FXML
     private GridPane gridpane;

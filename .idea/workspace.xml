@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado creo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Subject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/resultados.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/resultados.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Individual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Population.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Class.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Subject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Time.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/util/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/util/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/restos/GeneticAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/restos/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +162,10 @@
       <workItem from="1704037413637" duration="3475000" />
       <workItem from="1704136025959" duration="1107000" />
       <workItem from="1704211989136" duration="1597000" />
+      <workItem from="1704395578472" duration="64000" />
+      <workItem from="1704450146699" duration="3031000" />
+      <workItem from="1704454540570" duration="2507000" />
+      <workItem from="1704457614531" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -189,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704204774531</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="terminado creo">
+      <option name="closed" value="true" />
+      <created>1704395633193</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704395633193</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,9 +1,9 @@
 package es.unex.cum.si.practica.model.util;
 
-import es.unex.cum.si.practica.model.genotype.Group;
-import es.unex.cum.si.practica.model.genotype.Room;
-import es.unex.cum.si.practica.model.genotype.Subject;
-import es.unex.cum.si.practica.model.genotype.Time;
+import es.unex.cum.si.practica.model.phenotype.Group;
+import es.unex.cum.si.practica.model.phenotype.Room;
+import es.unex.cum.si.practica.model.phenotype.Subject;
+import es.unex.cum.si.practica.model.phenotype.Time;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,6 +13,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
+/**
+ * The Class Data is a singleton class that contains all the data of the problem.
+ * It translates the data from the file config.properties into the data structures
+ */
 public class Data {
     private final int numDays;
     private final int numPeriods;
@@ -94,6 +98,14 @@ public class Data {
         groups.put(4 , new Group(4, new int[] { 18, 19, 20, 21, 22, 23 }));
     }*/
 
+    /**
+     * Instantiates a new data. It reads the data from the file config.properties and creates the data structures.
+     * The data structures are:
+     * - timeSlots: a map of the timeslots of the problem
+     * - roomSlots: a map of the rooms of the problem
+     * - subjects: a map of the subjects of the problem
+     * - groups: a map of the groups of the problem
+     */
     private Data(){
         Properties properties = new Properties();
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/es/unex/cum/si/practica/config/config.properties"))) {
@@ -168,6 +180,12 @@ public class Data {
         return subjects.get(id);
     }
 
+    /**
+     * Gets the number of classes per week.
+     * It is calculated as the number of subjects multiplied by the number of hours per week of each subject.
+     *
+     * @return the number of classes per week
+     */
     public int getNumOfClasses() {
         return subjects.size() * SUBJECT_HOURS_PER_WEEK;
     }

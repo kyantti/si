@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"es.unex.cum.si.practica.controller"},{"l":"es.unex.cum.si.practica.model.genotype"},{"l":"es.unex.cum.si.practica.model.phenotype"},{"l":"es.unex.cum.si.practica.model.util"}];updateSearchResults();

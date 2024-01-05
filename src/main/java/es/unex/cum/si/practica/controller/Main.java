@@ -1,9 +1,9 @@
 package es.unex.cum.si.practica.controller;
 
-import es.unex.cum.si.practica.model.fenotype.Driver;
-import es.unex.cum.si.practica.model.genotype.Class;
-import es.unex.cum.si.practica.model.genotype.Group;
-import es.unex.cum.si.practica.model.genotype.Schedule;
+import es.unex.cum.si.practica.model.genotype.Driver;
+import es.unex.cum.si.practica.model.phenotype.Class;
+import es.unex.cum.si.practica.model.phenotype.Group;
+import es.unex.cum.si.practica.model.phenotype.Schedule;
 import es.unex.cum.si.practica.model.util.Data;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * The Main class is the entry point of the application.
+ * It runs the algorithm and shows the results.
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
