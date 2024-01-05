@@ -7,29 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado creo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="221ae79c-5659-48c5-87fb-a63aa0178dac" name="Changes" comment="terminado">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/resultados.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/resultados.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/fenotype/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Class.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Room.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/phenotype/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/genotype/Time.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/util/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/practica/model/util/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/restos/GeneticAlgorithm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/unex/cum/si/restos/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -67,29 +51,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Driver.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GeneticAlgorithm.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pablo/Documents/si/src/main/java/es/unex/cum/si/maxone&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Driver.executor": "Run",
+    "Application.GeneticAlgorithm.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/pablo/Documents/si/src/main/java/es/unex/cum/si/maxone",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/es/unex/cum/si/maxone" />
@@ -165,7 +152,7 @@
       <workItem from="1704395578472" duration="64000" />
       <workItem from="1704450146699" duration="3031000" />
       <workItem from="1704454540570" duration="2507000" />
-      <workItem from="1704457614531" duration="1008000" />
+      <workItem from="1704457614531" duration="3297000" />
     </task>
     <task id="LOCAL-00001" summary="en ello">
       <option name="closed" value="true" />
@@ -223,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704395633193</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="terminado">
+      <option name="closed" value="true" />
+      <created>1704458904183</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704458904183</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,9 +229,9 @@
     <MESSAGE value="en ello" />
     <MESSAGE value="sigo" />
     <MESSAGE value="kkkkklk" />
-    <MESSAGE value="terminado" />
     <MESSAGE value="terminado creo" />
-    <option name="LAST_COMMIT_MESSAGE" value="terminado creo" />
+    <MESSAGE value="terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminado" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
